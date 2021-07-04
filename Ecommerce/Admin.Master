@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Ecommerce.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+ <div class="container-fluid bg-info">
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="Default.aspx"><span ><img src="img/logo.png" alt="" height ="80" /></span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto " >
+                     <li>
+                        <a class="nav-link mx-5" href="Productos.aspx"><span>Productos</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link mx-5" href="Ventas.aspx">Ventas</a>
+                    </li>
+                     <li>
+                        <a class="nav-link mx-5" href="Clientes.aspx">Clientes</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+ <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

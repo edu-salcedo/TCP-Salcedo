@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Ecommerce.Site1" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <title>lalal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Style/Styles.css" rel="stylesheet" />
+    <link href="Style/UserStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="Default.aspx"><span>
+                <img src="img/logo.png" alt="" height="50" /></span></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Default.aspx">categorias</a>
+                    </li>
+                    <li class="nav-item mx-4">
+                        <a class="nav-link" href="Catalogo.aspx">Catalogo</a>
+                    </li>
+                    <li class="nav-item mx-4 ">
+                        <a class="nav-link" href="Contact.aspx">Contact</a>
+                    </li>
+
+                    <li class="nav-item mx-4 ">
+                        <a class="nav-link" href="Productos.aspx">Vista Admin</a>
+                    </li>
+                </ul>
+                <a class="btn btn-primary mx-5" href="Carrito.aspx"><i class="bi bi-cart4">Carrito</i></a>
+                <a class="navbar-brand" href="Login.aspx">Iniciar sesion</a>
+
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-light sticky-top bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand"></a>
+            <form runat="server" class="d-flex">
+                <asp:TextBox ID="TexBuscar" placeholder="Buscar producto marcas y ma..." runat="server">  </asp:TextBox>
+                <asp:Button ID="btnBuscar" CssClass="btn btn-secondary mx-5" runat="server" OnClick="btnBuscar_Click" Text="Search" />
+                
+            </form>
+        </div>
+    </nav>
+  
+
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+
+    <footer>
+
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-4">
+                    <h3>Servicio al cliente</h3>
+                    <h6>Legales</h6>
+                    <h6>Términos y condiciones</h6>
+                    <h6>Privacidad</h6>
+                    <h6>Tu opinión</h6>
+
+                </div>
+
+                <div class="col-4">
+                    <h3>Mi cuenta</h3>
+                    <h6>Registrate</h6>
+                    <h6>camnbio de contraseña</h6>
+                    <h6>agente virtual</h6>
+                    <h6>Tu opinión</h6>
+
+                </div>
+
+                <div class="col-4">
+                    <h3>Nuestra Empresa</h3>
+                    <h6>Servicio tecnico</h6>
+                    <h6>informacion legal</h6>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>
