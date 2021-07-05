@@ -10,6 +10,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -44,5 +45,6 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
+      <script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>

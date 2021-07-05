@@ -26,7 +26,7 @@
                         <td><%=string.Format("{0:C}",item.Precio) %></td>
                         <td><%=item.stock %></td>
                         <td><a class="btn btn-danger" href="Carrito.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
-                         <td><a href="UpdateProducto.aspx" class="btn btn-primary btn lg">editar</a></td>
+                         <td><a href="UpdateProducto.aspx?idproduct=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>
                 
                     </tr>
                     <%}%>

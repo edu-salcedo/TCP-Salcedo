@@ -52,5 +52,55 @@ namespace Negosio
                 throw ex;
             }
         }
+
+        public void registrar(Producto nuevo)
+        {
+            try
+            {
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.setearQuery("insert into Producto( UrlImagen,Nombre,Descripcion,idMarca,idCategoria,Precio,Stock)values( @imagen,@nombre,@des,@marca,@cat,@precio,@stock) ");
+
+                conexion.agregarParametro("@imagen", nuevo.Imagen);
+                conexion.agregarParametro("@nombre", nuevo.Nombre);
+                conexion.agregarParametro("@des", nuevo.Descripcion);
+                conexion.agregarParametro("@marca", nuevo.marca.Id);
+                conexion.agregarParametro("@cat", nuevo.categoria.Id);
+                conexion.agregarParametro("@precio", nuevo.Precio);
+                conexion.agregarParametro("@stock", nuevo.stock);
+
+                conexion.ejecutarAccion();
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void editar(Producto produc)
+        {
+            try
+            {
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.setearQuery("update Producto set  UrlImagen=@imagen, Nombre=@nombre,Descripcion=@des,idmarca=@idmarca,idcategoria=@cat,precio=@precio,stock=@stock  where Id=@id ");
+                conexion.agregarParametro("@id", produc.Id);
+
+                conexion.agregarParametro("@imagen", produc.Imagen);
+                conexion.agregarParametro("@nombre", produc.Nombre);
+                conexion.agregarParametro("@des", produc.Descripcion);
+                conexion.agregarParametro("@idmarca", produc.marca.Id);
+                conexion.agregarParametro("@cat", produc.categoria.Id);
+                conexion.agregarParametro("@precio", produc.Precio);
+                conexion.agregarParametro("@stock", produc.stock);
+
+                conexion.ejecutarAccion();
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

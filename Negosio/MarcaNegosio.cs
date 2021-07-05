@@ -8,7 +8,7 @@ using Dominio;
 
 namespace Negosio
 {
-    class MarcaNegosio
+     public class MarcaNegosio
     {
         public List<Marca> listar()
         {
@@ -16,12 +16,12 @@ namespace Negosio
             List<Marca> lista = new List<Marca>();
             AccesoDatos conexion = new AccesoDatos();
             conexion.conectar();
-            conexion.setearQuery("select id, nombre from Marcas");
+            conexion.setearQuery("select id, nombre from Marca");
             SqlDataReader lector = conexion.leer();
 
             while (lector.Read())
             {
-                lista.Add(new Marca((int)lector["id"], (string)lector["Descripcion"]));
+                lista.Add(new Marca((int)lector["id"], (string)lector["Nombre"]));
             }
             conexion.cerrarConexion();
             return lista;
