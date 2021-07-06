@@ -28,21 +28,8 @@ namespace Ecommerce
             idItem = Request.QueryString["idproduct"];
 
             try
-            {
-                if (IsPostBack)
-                {
-                    prod.Nombre = txtNombre.Text;
-                    prod.Descripcion = txtDescripcion.Text;
-                    prod.categoria = new Categoria();
-                    prod.categoria.Id = Convert.ToInt32(ddCat.SelectedValue);
-                    prod.marca = new Marca();
-                    prod.marca.Id = Convert.ToInt32(ddMarca.SelectedValue);
-                    prod.Precio = Convert.ToDecimal(txtPrecio.Text);
-                    prod.stock = Convert.ToInt32(txtStock.Text);
-                    prod.Imagen = txtUrl.Text;
-
-                }
-                else
+            { 
+                if (!IsPostBack)  // si es la primera vuelta
                 {
                     marcalist = Marcaneg.listar();
                     ddMarca.DataSource = marcalist;    ///se llena el dropdown  con la lista de marcas registardas
@@ -60,10 +47,22 @@ namespace Ecommerce
 
                     ddCat.DataBind();
                 }
+                else    // si es la segunda vuelta o mas
+                {
+                    prod.Nombre = txtNombre.Text;
+                    prod.Descripcion = txtDescripcion.Text;
+                    prod.categoria = new Categoria();
+                    prod.categoria.Id = Convert.ToInt32(ddCat.SelectedValue);
+                    prod.marca = new Marca();
+                    prod.marca.Id = Convert.ToInt32(ddMarca.SelectedValue);
+                    prod.Precio = Convert.ToDecimal(txtPrecio.Text);
+                    prod.stock = Convert.ToInt32(txtStock.Text);
+                    prod.Imagen = txtUrl.Text;
+                }
             }
             catch
             {
-
+                Response.Redirect("error.aspx");
             }
             if (idItem != null)//si viene a Editar
             {
@@ -74,14 +73,17 @@ namespace Ecommerce
                 }
                 prod = ((List<Producto>)Session.Contents["ListaProducto"]).Find(X => X.Id.ToString().Contains(idItem));  //asignamos a produc  el producto encontado en la session listaproducto
 
-                txtNombre.Text = prod.Nombre.ToString();
-                txtDescripcion.Text = prod.Descripcion.ToString();
-                ddCat.SelectedValue = prod.categoria.Id.ToString();
-                ddMarca.SelectedValue = prod.marca.Id.ToString();
-                int precio = Convert.ToInt32(prod.Precio);
-                txtPrecio.Text = precio.ToString();
-                txtStock.Text = prod.stock.ToString();
-                imagen = prod.Imagen.ToString();
+                if (!IsPostBack)// si es la primera vuelta  llenamos los campos de texto con el producto
+                {
+                    txtNombre.Text = prod.Nombre.ToString();
+                    txtDescripcion.Text = prod.Descripcion.ToString();
+                    ddCat.SelectedValue = prod.categoria.Id.ToString();
+                    ddMarca.SelectedValue = prod.marca.Id.ToString();
+                    int precio = Convert.ToInt32(prod.Precio);
+                    txtPrecio.Text = precio.ToString();
+                    txtStock.Text = prod.stock.ToString();
+                    imagen = prod.Imagen.ToString();
+                }
             }
         }
         protected void txtUrl_TextChanged(object sender, EventArgs e)
@@ -92,6 +94,7 @@ namespace Ecommerce
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             Page.Validate();
+
             if (!Page.IsValid)
             {
                 return;
@@ -114,11 +117,12 @@ namespace Ecommerce
             {
                 negosio.registrar(prod);
             }
-            if(prod.Id>0)
+            else
             {
                 negosio.editar(prod);
-
             }
+
+            Response.Redirect("Productos.aspx");
         }
     }
 }

@@ -4,26 +4,26 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-        <asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <br />
+
+
     <div class="container ">
-           <asp:UpdatePanel runat="server">
-                <ContentTemplate>
         <div class="row">
+
             <div class="col-8">
                 <div class="col-md-8">
                     <asp:Label Text="Nombre:" runat="server" CssClass="label" />
                     <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
                     <asp:RequiredFieldValidator ErrorMessage="Campo requerido" ForeColor="Red" ControlToValidate="txtNombre" runat="server" />
-                    <asp:RegularExpressionValidator ErrorMessage="Ups, solo admitimos letras" ForeColor="Red" ControlToValidate="txtNombre" runat="server" ValidationExpression="^[a-zA-Z ]*$" />
+                    <%--<asp:RegularExpressionValidator ErrorMessage="ingresar solo letras" ForeColor="Red" ControlToValidate="txtNombre" runat="server" ValidationExpression="^[a-zA-Z ]*$" />--%>
                 </div>
 
                 <div class="col-md-8">
                     <asp:Label Text="Descripción:" runat="server" class="from-group" />
                     <asp:TextBox runat="server" ID="txtDescripcion" CssClass="form-control" />
                     <asp:RequiredFieldValidator ErrorMessage="Campo requerido" ForeColor="Red" ControlToValidate="txtDescripcion" runat="server" />
-                    <asp:RegularExpressionValidator ErrorMessage="" ForeColor="Red" ControlToValidate="txtDescripcion" runat="server" ValidationExpression="^[a-zA-Z ]*$" />
+                   
                 </div>
 
                 <div class="col-md-8">
@@ -42,7 +42,7 @@
                     <asp:Label Text="Precio:" runat="server" CssClass="from-group" />
                     <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
                     <asp:RequiredFieldValidator ErrorMessage="Campo requerido" ForeColor="Red" ControlToValidate="txtPrecio" runat="server" />
-                    <asp:RegularExpressionValidator ErrorMessage="solo admitimos números" ForeColor="Red" ControlToValidate="txtPrecio" runat="server" ValidationExpression="^[0-9]{0,10}$" />
+                    <asp:RegularExpressionValidator ErrorMessage="este campo solo acepta numeros" ForeColor="Red" ControlToValidate="txtPrecio" runat="server" ValidationExpression="^[0-9]{0,10}$" />
 
                 </div>
 
@@ -50,29 +50,39 @@
                     <asp:Label Text="Stock:" runat="server" CssClass="from-group" />
                     <asp:TextBox runat="server" ID="txtStock" CssClass="form-control" />
                     <asp:RequiredFieldValidator ErrorMessage="Campo requerido" ForeColor="Red" ControlToValidate="txtStock" runat="server" />
-                    <asp:RegularExpressionValidator ErrorMessage="solo admitimos números" ForeColor="Red" ControlToValidate="txtStock" runat="server" ValidationExpression="^[0-9]{0,10}$" />
+                    <asp:RegularExpressionValidator ErrorMessage="este campo solo acepta numeros" ForeColor="Red" ControlToValidate="txtStock" runat="server" ValidationExpression="^[0-9]{0,10}$" />
                 </div>
+                <%--fin col8  --%>
+            </div>
 
-                <div class="col-12">
+            <div class="col-4">
+                <div>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+
+                            <asp:Label Text="Url:" runat="server" CssClass="label" />
+                            <asp:TextBox runat="server" ID="txtUrl" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtUrl_TextChanged" />
+                            <div class="container">
+                                <img src="<%=imagen%>" alt="" width="90%" />
+                              </div>
+
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="container  text-center">
                     <br />
-                    <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" type="submit" CssClass="btn btn-info" Text="Registrar" />
+                    <asp:Button ID="Button1" runat="server" OnClick="btnGuardar_Click" type="submit" CssClass="btn btn-info" Text="Guardar" />
                 </div>
+
             </div>
 
-            <div class="col-4 text-center">
-
-         
-                 <asp:Label Text="Url:" runat="server" CssClass="label" />
-
-                 <asp:TextBox runat="server" ID="txtUrl" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtUrl_TextChanged" />
-                <div class="container">
-
-                 <img src="<%=imagen%>" alt="" width="90%" />
-              </div>     
-                          
-            </div>
         </div>
-               </ContentTemplate>
-            </asp:UpdatePanel> 
     </div>
 </asp:Content>
+
+
+
+
+
+
+

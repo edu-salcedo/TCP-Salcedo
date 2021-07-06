@@ -15,7 +15,6 @@ namespace Negosio
         {
             try
             {
-
                 List<Producto> lista = new List<Producto>();
                 AccesoDatos conexion = new AccesoDatos();
                 conexion.conectar();

@@ -36,12 +36,12 @@ create table DatosPersonales (
    Idusuario int not null primary Key,
    Nombre varchar(100) not Null,
    Apellido varchar(100) not Null,
-   DNI varchar (10) not null  Check (not DNI like '%[^0-9]%'),
-   Telefono varchar(20) not null check (not Telefono like '%[^0-9]%'),
+   DNI int not null,
+   Telefono int not null,
    Direccion varchar(100) not null,
    Email varchar (100) not null
 )
---"not DNI like '%[^0-9]%'"   que DNI solo contenga caracteres numericos
+
 go
 alter table DatosPersonales
 add constraint FK_DatosPersonales_IdUsuario foreign key (IdUsuario)references Usuarios (Id)
@@ -50,10 +50,12 @@ go
 create table Venta (
   Id int not null primary Key identity (1,1),
   IdUsuario int not null foreign key references  Usuarios (Id),
-  Fecha date not null check(Fecha<=getdate()) default(getdate()),
+  Fecha date not null check(Fecha>=getdate()) default(getdate()),
   Importe money not null check (Importe >0)
 )
 go
+
+ select* from DatosPersonales 
 
 create table Producto (
    Id int not null primary Key identity (1,1),

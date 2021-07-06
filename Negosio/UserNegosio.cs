@@ -9,7 +9,43 @@ namespace Negosio
 {
     public class UserNegosio
     {
-        public void Registrar(User nuevo)
+
+
+        public List<User> listar()
+        {
+            try
+            {
+                List<User> listaUser = new List<User>();
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.conectar();
+                conexion.setearQuery("select NombreUsuario, Nombre, Apellido, Email, Direccion, Telefono tel from WVusers");
+                SqlDataReader lector = conexion.leer();
+
+                while (lector.Read())
+                {
+                    User aux = new User();
+                    aux.Usuario= lector.GetString(0);
+                    aux.Nombre = lector.GetString(1);
+                    aux.Apellido= lector.GetString(2);
+                    aux.mail = lector.GetString(3);
+                    aux.direccion = lector.GetString(4);
+                    aux.telefono = (int)lector["tel"];
+     
+
+                    listaUser.Add(aux);
+                }
+                conexion.cerrarConexion();
+                return listaUser;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+        }
+
+            public void Registrar(User nuevo)
         {
             try
             {
@@ -36,29 +72,3 @@ namespace Negosio
         }
     }
 }
-
-
-
-//UserNegosio UserIn = new UserNegosio();
-//User newUser = new User();
-
-
-//newUser.Nombre = txtName.Text;
-//newUser.Apellido = txtApellido.Text;
-//newUser.mail = txtMail.Text;
-//newUser.tipo = 2;
-//newUser.telefono = Convert.ToInt32(txtfone.Text);
-//newUser.Usuario = txtUname.Text;
-//newUser.DNI = Convert.ToInt32(txtDni.Text);
-//newUser.Contrasena = txtCPass.Text;
-//newUser.direccion = txtAdress.Text;
-
-//UserIn.Registrar(newUser);
-
-////string script = @"<script type='text/javascript'>
-////            alert('Usuario agregado con exito');
-////        </script>";
-
-////ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
-
-//Response.Redirect("Login.aspx");

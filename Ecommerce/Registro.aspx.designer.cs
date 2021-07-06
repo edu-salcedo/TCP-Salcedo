@@ -33,6 +33,15 @@ namespace Ecommerce
         protected global::System.Web.UI.WebControls.TextBox txtUname;
 
         /// <summary>
+        /// lbError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbError;
+
+        /// <summary>
         /// txtPass control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Ecommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMail;
+
+        /// <summary>
+        /// lberrormail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lberrormail;
 
         /// <summary>
         /// txtDNI control.
