@@ -82,6 +82,7 @@ namespace Ecommerce
                     int precio = Convert.ToInt32(prod.Precio);
                     txtPrecio.Text = precio.ToString();
                     txtStock.Text = prod.stock.ToString();
+                    txtUrl.Text = prod.Imagen.ToString();
                     imagen = prod.Imagen.ToString();
                 }
             }

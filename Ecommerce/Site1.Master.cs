@@ -39,8 +39,7 @@ namespace Ecommerce
                     Session.Add("ListBuscar", listaBuscar);     // agregamos a la session "carrito" el articulo encontrado 
                     Response.Redirect("Catalogo.aspx");
                 }
-           
-            
+                  
         }
     }
 }

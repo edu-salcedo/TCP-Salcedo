@@ -1,0 +1,21 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.Social {
+    font-size: 50px;
+    margin-top: 0px;
+    color: blue;
+    position: relative;
+}
+.youtube {
+    font-size: 50px;
+    margin-top: 0px;
+    color: red;
+    position: relative;
+}
+
+.contenedor {
+    background-color:aqua;
+}
+

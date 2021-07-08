@@ -12,11 +12,8 @@
 </head>
 <body>
 
-    <div class="container-fluid bg-warning text-center">
+    
 
-        <a href="Default.aspx"><span>
-            <img src="img/logo.png" alt="" height="80" /></span></a>
-    </div>
 
     <form id="form1" runat="server">
         <div>
@@ -29,7 +26,7 @@
                             <label class="from-group">Nombre de usuario:</label>
                             <div class="col-xs-11">
                                 <asp:TextBox ID="txtUname" runat="server" Class="form-control" placeholder="Nombre de usuario"></asp:TextBox>
-                                <asp:RequiredFieldValidator ErrorMessage="Campo requerido" ForeColor="Red" ControlToValidate="txtUname" runat="server" />       
+                                <asp:RequiredFieldValidator ErrorMessage="Campo requerido" ForeColor="Red" ControlToValidate="txtUname" runat="server" />
                                 <asp:Label ID="lbError" runat="server" Text="" CssClass="d-flex align-items-center text-danger"></asp:Label>
                             </div>
 

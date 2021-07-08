@@ -13,7 +13,8 @@ go
 create table Categoria
 (
   Id int not null primary Key identity (1,1),
-  Nombre varchar(50) not Null
+  Nombre varchar(50) not Null,
+  Imagen varchar(100)
 )
 
 go
@@ -89,9 +90,9 @@ insert into Marca(Nombre) values('Motorola')
 insert into Marca(Nombre) values('Lenovo')
 
 
-insert into Categoria(Nombre) values('Celulares')
-insert into Categoria(Nombre) values('Televisores')
-insert into Categoria(Nombre) values('Notebooks')
+insert into Categoria(Nombre,Imagen) values('Celulares','https://images.fravega.com/s250/d0d1523c0007261e84635068a4bbad63.png')
+insert into Categoria(Nombre,Imagen) values('Televisores','https://images.fravega.com/s250/e1845d91c77f353b58d9af2c87af4b39.png')
+insert into Categoria(Nombre,Imagen) values('Notebooks','https://images.fravega.com/s250/1105c40ac70e0f390d16e9fc821a8518.png.webp')
 
 insert into Producto(UrlImagen, Nombre,Descripcion,idMarca,idCategoria,Estado, Precio,Stock)
 values('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4CdjHZImy48ZeevAMy_Und7ZXOQulacqJWw&usqp=CAU','Moto Edge','Nueva generacion',3,1,1,69000,4)

@@ -16,9 +16,15 @@ namespace Ecommerce
         {
             UserNegosio Userneg = new UserNegosio();
             listauser = new List<User>();
-
-            listauser = Userneg.listar();
-
+            if (Session["Usuarios"] == null)
+            {
+                listauser = Userneg.listar();
+                Session["Usuarios"] = listauser;
+            }
+            else
+            {
+                listauser = (List<User>)Session["Usuarios"];
+            }
             buscaruser();
         }
 

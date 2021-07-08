@@ -18,7 +18,7 @@ namespace Negosio
                 List<User> listaUser = new List<User>();
                 AccesoDatos conexion = new AccesoDatos();
                 conexion.conectar();
-                conexion.setearQuery("select NombreUsuario, Nombre, Apellido, Email, Direccion, Telefono tel from WVusers");
+                conexion.setearQuery("select NombreUsuario, Nombre, Apellido, Email, Direccion, Telefono tel,id from WVusers");
                 SqlDataReader lector = conexion.leer();
 
                 while (lector.Read())
@@ -30,8 +30,7 @@ namespace Negosio
                     aux.mail = lector.GetString(3);
                     aux.direccion = lector.GetString(4);
                     aux.telefono = (int)lector["tel"];
-     
-
+                    aux.id = (int)lector["id"];
                     listaUser.Add(aux);
                 }
                 conexion.cerrarConexion();

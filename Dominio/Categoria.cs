@@ -10,14 +10,16 @@ namespace Dominio
     {
         public long Id { get; set; }
         public string Nombre { get; set; }
+        public string Imagen { get; set; }
         public Categoria()
         {
 
         }
-        public Categoria(int id, string nom)
+        public Categoria(int id, string nom,string img)
         {
             Id = id;
             Nombre = nom;
+            Imagen = img;
         }
         public override string ToString()
         {
