@@ -18,6 +18,31 @@ namespace Ecommerce
             ProductoNegosio negosio = new ProductoNegosio();
             Produc = negosio.listar();
 
+            if (Request.QueryString["idCancelar"] != null)
+            {
+                int aux= Convert.ToInt32(Request.QueryString["idCancelar"]);
+                int id= buscar(aux);
+                if(id>0)
+                {
+                    negosio.eliminar(id);
+                }
+
+            }
+
         }
+
+        int buscar(int id)
+        {
+            int idpro=0;
+            foreach(Producto item in Produc)
+            {
+                if (item.Id == id) ;
+                {
+                    idpro = item.Id;
+                }
+            }
+            return idpro;
+        }
+
     }
 }

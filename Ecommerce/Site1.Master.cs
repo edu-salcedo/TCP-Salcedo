@@ -10,21 +10,34 @@ namespace Ecommerce
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
-        public List<Producto> listaBuscar { get; set; }
+          List<Producto> listaBuscar { get; set; }
+        User nuevo;
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Cart> listaarticulo = new List<Cart>();
-
             if (Session["carrito"] == null)
             {
                 Session.Add("carrito", new List<Cart>());
             }
-            else
-            {
-                listaarticulo = (List<Cart>)Session["carrito"];
-               
-            }
 
+            if (Session["Logeado"] != null)
+            {
+                nuevo = new User();
+                nuevo = (User)Session["Logeado"];
+                txtUsuario.Text = nuevo.Usuario;
+                salir.Visible = true;
+      
+                //nombreUsuario es el id que tiene la p el  el front en el nav bar
+                Iniciar.Visible = false;  //  ocultamos el iniciar sesion
+
+                if (nuevo.tipo==1)
+                {
+                    vistaadmin.Visible = true;
+                }
+                else
+                {
+                    vistaadmin.Visible = false;
+                }
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -40,6 +53,12 @@ namespace Ecommerce
                     Response.Redirect("Catalogo.aspx");
                 }
                   
+        }
+
+        protected void salir_Click(object sender, EventArgs e)
+        {
+            Session["logeado"] = null;
+            Response.Redirect("Catalogo.aspx");
         }
     }
 }

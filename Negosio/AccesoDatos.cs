@@ -10,18 +10,13 @@ namespace Negosio
     class AccesoDatos
     {
         public SqlDataReader lector { get; set; }
-
         public SqlConnection conexion { get; set; }
-
         public SqlCommand comando { get; set; }
 
         public AccesoDatos()
         {
-
-            conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog = Ecommerce; integrated security=sspi ");
-                                                                             
-
-             comando = new SqlCommand();
+            conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog = Ecommerce; integrated security=sspi ");                                                                          
+            comando = new SqlCommand();
             comando.Connection = conexion;
         }
         public void conectar()

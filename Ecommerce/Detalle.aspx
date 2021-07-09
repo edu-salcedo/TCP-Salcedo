@@ -21,7 +21,7 @@
                         <h6 class="card-subtitle mb-2 text-muted"><%=Prodetalle.marca %></h6>
                         <h6 class="card-subtitle mb-2 text-muted"><%=Prodetalle.categoria %></h6>
                         <h6 class="card-subtitle mb-2 text-muted"><%=Prodetalle.Descripcion%></h6>
-                        <a href="#" class="card-link">Another link</a>
+                        <a href="#" class="card-link btn btn-info">Seguir biendo</a>
                     </div>
                 </div>
             </div>

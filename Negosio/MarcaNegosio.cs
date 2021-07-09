@@ -26,5 +26,22 @@ namespace Negosio
             conexion.cerrarConexion();
             return lista;
         }
+
+        public void registrar(Marca nuevo)
+        {
+            try
+            {
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.setearQuery("insert into Producto(Nombre)values(@nombre)");
+
+                conexion.agregarParametro("@nombre", nuevo.Nombre);
+                conexion.ejecutarAccion();
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

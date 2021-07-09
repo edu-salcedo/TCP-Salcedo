@@ -91,6 +91,7 @@
     <Content Include="Detalle.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MarcaYCat.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -171,6 +172,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MarcaYCat.aspx.cs">
+      <DependentUpon>MarcaYCat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarcaYCat.aspx.designer.cs">
+      <DependentUpon>MarcaYCat.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>

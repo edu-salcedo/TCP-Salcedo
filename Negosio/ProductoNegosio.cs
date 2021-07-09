@@ -101,5 +101,20 @@ namespace Negosio
                 throw ex;
             }
         }
+
+        public void eliminar(int id)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            try
+            {
+                conexion.setearQuery("delete from Producto where id=@id");
+                conexion.agregarParametro("@id", id);
+                conexion.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

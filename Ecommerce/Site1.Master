@@ -18,6 +18,7 @@
     <link href="Style/SiteStyle.css" rel="stylesheet" />
 </head>
 <body>
+  <form runat="server">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,24 +39,23 @@
                     </li>
 
                     <li class="nav-item mx-4 ">
-                        <a class="nav-link" href="Productos.aspx">Vista Admin</a>
+                        <a class="nav-link" visible="false" id="vistaadmin" href="Productos.aspx" runat="server">Vista Admin</a>
                     </li>
+
                 </ul>
                 <a class="btn btn-primary mx-5" href="Carrito.aspx"><i class="bi bi-cart4">Carrito</i></a>
-                <a class="navbar-brand" href="Login.aspx">Iniciar sesion</a>
 
+                <a class="navbar-brand" visible="true" id="Iniciar" href="Login.aspx" runat="server">Iniciar sesion</a>
+                  <a class="navbar-brand" ><asp:Label ID="txtUsuario" runat="server" Text=""></asp:Label> </a> 
+                   <asp:Button ID="salir" Visible="false" runat="server" OnClick="salir_Click" Text="Salir" />
             </div>
         </div>
     </nav>
 
-    <nav class="navbar navbar-light sticky-top bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand"></a>
-            <form runat="server" class="d-flex">
-                <asp:TextBox ID="TexBuscar" placeholder="Buscar producto marcas y ma..." runat="server">  </asp:TextBox>
-                <asp:Button ID="btnBuscar" CssClass="btn btn-secondary mx-5" runat="server" OnClick="btnBuscar_Click" Text="Search" />
-
-            </form>
+    <nav class="navbar sticky-top bg-light">
+        <div class="align-items-lg-start ms-5">
+                <a> <asp:TextBox ID="TexBuscar" placeholder="Buscar producto marcas y ma..." runat="server">  </asp:TextBox></a> 
+                <a> <asp:Button ID="btnBuscar" CssClass="btn btn-secondary mx-5" runat="server" OnClick="btnBuscar_Click" Text="Search" /></a> 
         </div>
     </nav>
 
@@ -94,9 +94,9 @@
 
                 <div class="col-4 text-center">
                     <ul>
-                        <li><a class="navfirst" href="Default.aspx">Mi cuenta</a></li>
-                        <li><a class="navsecond" href="Default.aspx">Registrate </a></li>
-                        <li><a class="navsecond" href="Default.aspx">camnbio de contraseña </a></li>
+                        <li><a class="navfirst" href="Login.aspx">Mi cuenta</a></li>
+                        <li><a class="navsecond" href="Registro.aspx">Registrate </a></li>
+                        <li><a class="navsecond" href="Login.aspx">camnbio de contraseña </a></li>
                         <li><a class="navsecond" href="Default.aspx">Tu opinión</a></li>
                     </ul>
                 </div>
@@ -111,7 +111,7 @@
             </div>
         </div>
     </footer>
-
+</form>
     <script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>

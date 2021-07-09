@@ -26,5 +26,23 @@ namespace Negosio
             conexion.cerrarConexion();
             return lista;
         }
+
+        public void registrar(Categoria nuevo)
+        {
+            try
+            {
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.setearQuery("insert into Categoria( Nombre,Imagen)values(@nombre, @imagen) ");
+
+                conexion.agregarParametro("@imagen", nuevo.Imagen);
+                conexion.agregarParametro("@nombre", nuevo.Nombre);
+                conexion.ejecutarAccion();
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

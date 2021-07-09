@@ -25,7 +25,7 @@
                         <td><%=item.Nombre %></td>
                         <td><%=string.Format("{0:C}",item.Precio) %></td>
                         <td><%=item.stock %></td>
-                        <td><a class="btn btn-danger" href="Carrito.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
+                        <td><a class="btn btn-danger" href="Productos.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
                          <td><a href="UpdateProducto.aspx?idproduct=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>
                 
                     </tr>
@@ -33,9 +33,8 @@
                 </table>
             </div>
             <div class="col-12 col-md-4">
-                <div class="container">
+                <div class="container text-center">
                     <hr />
-                    <h3>Estos son todos los productos </h3>
                     <hr />
                     <asp:Label ID="lbtotal" runat="server" Text=""></asp:Label>
                     <a href="UpdateProducto.aspx" class="btn btn-success btn lg">Agregar un nuevo articulo</a>
