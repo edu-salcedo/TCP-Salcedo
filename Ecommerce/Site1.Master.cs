@@ -13,15 +13,15 @@ namespace Ecommerce
         public List<Producto> listaBuscar { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Producto> listaarticulo = new List<Producto>();
+            List<Cart> listaarticulo = new List<Cart>();
 
             if (Session["carrito"] == null)
             {
-                Session.Add("carrito", new List<Producto>());
+                Session.Add("carrito", new List<Cart>());
             }
             else
             {
-                listaarticulo = (List<Producto>)Session["carrito"];
+                listaarticulo = (List<Cart>)Session["carrito"];
                
             }
 

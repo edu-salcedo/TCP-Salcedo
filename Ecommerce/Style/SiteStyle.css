@@ -2,10 +2,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.Social {
+.Social{
     font-size: 50px;
     margin-top: 0px;
-    color: blue;
+    color:blue;
     position: relative;
 }
 .youtube {
@@ -15,7 +15,23 @@
     position: relative;
 }
 
-.contenedor {
+.contenedor{
     background-color:aqua;
+}
+
+ul{
+    list-style-type:none;
+}
+.navfirst {
+    text-decoration: none;
+    color:grey;
+    font-size:1.5rem;
+    font-family:'Times New Roman', Times, serif;
+}
+.navsecond {
+    text-decoration: none;
+    color:lightsteelblue;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
 }
 
