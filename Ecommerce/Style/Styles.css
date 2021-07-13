@@ -7,3 +7,17 @@
 }
 
 
+.marca{
+    text-decoration: none;
+    color:darkslategrey;
+    font-size: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-family:'Berlin Sans FB';
+    color:darkslategrey;
+    font-size: 3rem;
+}
+
+

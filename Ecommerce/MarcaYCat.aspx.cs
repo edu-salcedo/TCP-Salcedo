@@ -14,36 +14,61 @@ namespace Ecommerce
         public List<Categoria> liscat;
         CategoriaNegosio catneg;
         MarcaNegosio marneg;
+        Categoria cat;
+        Marca mar;
         public int idmarca=0;
         public int idcat=0;
         public string imagen;
+        public int aux;
         protected void Page_Load(object sender, EventArgs e)
         {
             marneg = new MarcaNegosio();
             catneg = new CategoriaNegosio();
             lismarca = marneg.listar();
             liscat = catneg.listar();
+             cat = new Categoria();
+             mar = new Marca();
 
-            idcat = Convert.ToInt32(Request.QueryString["idcat"]);
-            idmarca = Convert.ToInt32(Request.QueryString["idMarca"]);
-
-            if (idcat>0)
+            if(IsPostBack)
             {
-                Categoria cat = new Categoria();
-                cat =buscarCat();
-                texnom.Text = cat.Nombre;
-                TexImagen.Text = cat.Imagen;
-                imagen = cat.Imagen;
-                if(!IsPostBack)
-                {
-
-                }
+                mar.Nombre = texmarca.Text;
+                cat.Nombre = texnom.Text;
+                cat.Imagen = TexImagen.Text;
             }
-            if (idmarca>0)
+
+
+            if (Request.QueryString["idcat"]!=null) // si biene a editar una categoria
             {
-                Marca mar = new Marca();
+                idcat = Convert.ToInt32(Request.QueryString["idcat"]); 
+                cat =buscarCat();
+                if (!IsPostBack)
+                {
+                    texnom.Text = cat.Nombre;
+                    TexImagen.Text = cat.Imagen;
+                    imagen = cat.Imagen;
+                }
+                BtnGuardar.Visible = true;
+            }
+            if (Request.QueryString["idMarca"]!=null)  // si biene a editar una marca
+            {
+                idmarca = Convert.ToInt32(Request.QueryString["idMarca"]);
                 mar = buscarMarca();
-                texmarca.Text = mar.Nombre;             
+                if (!IsPostBack)
+                {
+                    texmarca.Text = mar.Nombre;
+                }
+                BtnGuardar.Visible = true;
+            }
+
+            if(Request.QueryString["cat"]=="1") //si pulsa boton ingresar nuevo categoria
+            {
+                    aux=1;
+                BtnGuardar.Visible = true;
+            }
+            if (Request.QueryString["mar"] == "2") //si pulsa boton ingresar nuevo marca
+            {
+                    aux= 2;
+                BtnGuardar.Visible = true;
             }
 
         }
@@ -83,22 +108,26 @@ namespace Ecommerce
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
 
-            //if (IsPostBack)
-            //{
-            //    if (idcat > 0)
-            //    {
-            //        Categoria cat = new Categoria();
-            //        cat = buscarCat();
-            //        texnom.Text = cat.Nombre;
-            //        TexImagen.Text = cat.Imagen;
-            //    }
-            //    if (idmarca > 0)
-            //    {
-            //        Marca mar = new Marca();
-            //        mar = buscarMarca();
-            //        texmarca.Text = mar.Nombre;
-            //    }
-            //}
+            if (IsPostBack)
+            {
+                if (idcat>0|| aux==1)
+                {
+                    cat.Nombre = texnom.Text;
+                    cat.Imagen =TexImagen.Text;
+                    
+                    if(aux==1) catneg.registrar(cat);
+                    if (idcat>0) catneg.editar(cat);
+                 
+                }
+                if (idmarca>0||aux==2)
+                {
+                    mar.Nombre = texmarca.Text;
+                   
+                    if (aux==2)marneg.registrar(mar);
+                    if (idmarca>0) marneg.editar(mar);
+                    
+                }
+            }
         }
     }
 }

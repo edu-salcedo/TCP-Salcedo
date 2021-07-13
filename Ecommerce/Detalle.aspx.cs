@@ -13,21 +13,27 @@ namespace Ecommerce
     {
         int idArticulo;
        public  Producto Prodetalle=null;
-        List<Producto> listaProducto;
+       public List<Producto> listaProducto;
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
 
                 ProductoNegosio negocio = new ProductoNegosio();
                 idArticulo = Convert.ToInt32(Request.QueryString["idArticulo"]);
-                listaProducto = negocio.listar();
-               
+                listaProducto = negocio.listar();             
                 Prodetalle= Buscar(listaProducto, idArticulo);
-
+                if (Session["Similares"]!=null)
+                {
+                    Session.Add("Similares", new List<Producto>());
+                }
+                else
+                {
+                    
+                    listaProducto = listaProducto.FindAll(x => x.categoria.Nombre.Contains(Prodetalle.categoria.Nombre));
+                }
             }
-            catch(Exception ex)
+            catch
             {
                 Response.Redirect("Default.aspx");
             }

@@ -42,7 +42,7 @@ namespace Ecommerce
                         idmas = Convert.ToInt32(Request.QueryString["idmas"]);
                         buscar_producto(idmas);
                     }
-                    if (Request.QueryString["idcancelar"] != null)//si bine a quitar el producto del carrito
+                    if (Request.QueryString["idcancelar"] != null)//si biene a quitar el producto del carrito
                     {
                         idPro = Convert.ToInt32(Request.QueryString["idcancelar"]);
                         carrito.Remove(carrito.Find(x => x.IdProducto == idPro));

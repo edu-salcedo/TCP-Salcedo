@@ -32,9 +32,25 @@ namespace Negosio
             try
             {
                 AccesoDatos conexion = new AccesoDatos();
-                conexion.setearQuery("insert into Producto(Nombre)values(@nombre)");
+                conexion.setearQuery("insert into Marca(Nombre)values(@nombre)");
 
                 conexion.agregarParametro("@nombre", nuevo.Nombre);
+                conexion.ejecutarAccion();
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void editar(Marca marca)
+        {
+            try
+            {
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.setearQuery("update Marca set Nombre=@nombre where Id=@id ");
+                conexion.agregarParametro("@id", marca.Id);
+                conexion.agregarParametro("@nombre", marca.Nombre);
                 conexion.ejecutarAccion();
                 conexion.cerrarConexion();
             }

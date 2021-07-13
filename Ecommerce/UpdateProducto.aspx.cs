@@ -28,7 +28,7 @@ namespace Ecommerce
             idItem = Request.QueryString["idproduct"];
 
             try
-            { 
+            {
                 if (!IsPostBack)  // si es la primera vuelta
                 {
                     marcalist = Marcaneg.listar();
@@ -55,38 +55,46 @@ namespace Ecommerce
                     prod.categoria.Id = Convert.ToInt32(ddCat.SelectedValue);
                     prod.marca = new Marca();
                     prod.marca.Id = Convert.ToInt32(ddMarca.SelectedValue);
-                    prod.Precio = Convert.ToDecimal(txtPrecio.Text);
-                    prod.stock = Convert.ToInt32(txtStock.Text);
                     prod.Imagen = txtUrl.Text;
+                    if (txtPrecio.Text == "") //parche para cuando ingresas primero el url  hace el autopostback y queda precio "" y te tira error
+                    {
+                       prod.Precio = 0;
+                       prod.stock = 0;
+                    }
+                    else
+                    {
+                        prod.Precio = Convert.ToDecimal(txtPrecio.Text);
+                        prod.stock = Convert.ToInt32(txtStock.Text);
+                    }
                 }
-            }
+
+                if (idItem != null)//si viene a Editar
+                {
+                    if (Session.Contents["ListaProducto"] == null)
+                    {
+                        Session.Add("ListaProducto", negosio.listar());
+                    }
+                    prod = ((List<Producto>)Session.Contents["ListaProducto"]).Find(X => X.Id.ToString().Contains(idItem));  //asignamos a produc  el producto encontado en la session listaproducto
+
+                    if (!IsPostBack)// si es la primera vuelta  llenamos los campos de texto con el producto
+                    {
+                        txtNombre.Text = prod.Nombre.ToString();
+                        txtDescripcion.Text = prod.Descripcion.ToString();
+                        ddCat.SelectedValue = prod.categoria.Id.ToString();
+                        ddMarca.SelectedValue = prod.marca.Id.ToString();
+                        int precio = Convert.ToInt32(prod.Precio);
+                        txtPrecio.Text = precio.ToString();
+                        txtStock.Text = prod.stock.ToString();
+                        txtUrl.Text = prod.Imagen.ToString();
+                        imagen = prod.Imagen.ToString();
+                    }
+                }
+        }
             catch
             {
                 Response.Redirect("error.aspx");
             }
-            if (idItem != null)//si viene a Editar
-            {
-
-                if (Session.Contents["ListaProducto"] == null)
-                {
-                    Session.Add("ListaProducto", negosio.listar());
-                }
-                prod = ((List<Producto>)Session.Contents["ListaProducto"]).Find(X => X.Id.ToString().Contains(idItem));  //asignamos a produc  el producto encontado en la session listaproducto
-
-                if (!IsPostBack)// si es la primera vuelta  llenamos los campos de texto con el producto
-                {
-                    txtNombre.Text = prod.Nombre.ToString();
-                    txtDescripcion.Text = prod.Descripcion.ToString();
-                    ddCat.SelectedValue = prod.categoria.Id.ToString();
-                    ddMarca.SelectedValue = prod.marca.Id.ToString();
-                    int precio = Convert.ToInt32(prod.Precio);
-                    txtPrecio.Text = precio.ToString();
-                    txtStock.Text = prod.stock.ToString();
-                    txtUrl.Text = prod.Imagen.ToString();
-                    imagen = prod.Imagen.ToString();
-                }
-            }
-        }
+}
         protected void txtUrl_TextChanged(object sender, EventArgs e)
         {
             imagen = txtUrl.Text;
@@ -111,18 +119,17 @@ namespace Ecommerce
                 prod.Precio = Convert.ToDecimal(txtPrecio.Text);
                 prod.stock = Convert.ToInt32(txtStock.Text);
                 prod.Imagen = txtUrl.Text;
-
             }
 
             if (prod.Id == 0)
             {
                 negosio.registrar(prod);
+                Session["ListaProducto"]=negosio.listar();  //agregamos a la session listaProducto el nuevo producto ingresado
             }
             else
             {
                 negosio.editar(prod);
             }
-
             Response.Redirect("Productos.aspx");
         }
     }

@@ -39,18 +39,22 @@
             <h1> categorias destacadas </h1>
         </div>
         <div class="row pl-3">
-            <%
+            <%   int cont = 0;
                 foreach (Dominio.Categoria item in listcat)
-                { %>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="card text-center h-100" style="width: 18rem;">
-                    <a class="navbar-brand" href="Catalogo.aspx?nomcat=<%=item.Nombre %>"<span>
-
-                        <img src="<%=item.Imagen%>" alt="no hay imagen" /></span></a>
-                         <h3 class="card-title"><b><%= item.Nombre %> </b></h3>
-                </div>
-            </div>
-            <% } %>
+                {
+                    if (cont < 3)
+                    {%>
+                  <div class="col-lg-4 col-md-6 text-center">
+                      <div class="card text-center h-100" style="width: 18rem;">
+                          <a class="navbar-brand" href="Catalogo.aspx?nomcat=<%=item.Nombre %>"><span>
+                            <img src="<%=item.Imagen%>" alt="no hay imagen"/></span></a>
+                           <h3 class="card-title"><b><%= item.Nombre %> </b></h3>
+                      </div>
+                  </div>
+                    <% 
+                        cont++;
+                    }
+                } %>
         </div>
     </div>
 

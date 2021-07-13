@@ -4,15 +4,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="container">
+   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-
+    <div class="text-cemter">
         <div class="row mt-5">
-            <div class="col col-lg-4 col-md-6 col-sm-12 col border border-secondary border-2">
+            <div class="col col-lg-4 col-md-6 col-sm-12 ">
                  <div class="text-center">
                 <h2>Categorias</h2>
+                     <br />
+                     <a href="MarcaYCat.aspx?cat=1" class="btn btn-success btn lg">Registrar Categoria</a>
+                     <br />
                 </div>
+                <div class="container col border border-primary mt-4">
                 <table class="table table-hover">
                     <%foreach (Dominio.Categoria item in liscat)
                         { %>
@@ -23,13 +26,17 @@
                     </tr>
                     <%}%>
                 </table>
+                </div>
             </div>
 
-            <div class="col col-lg-4 col-md-6 col-sm-12 col border border-secondary border-2 p-2">
+            <div class="col col-lg-4 col-md-6 col-sm-12">
                 <div class="text-center">
                 <h2>Marcas</h2>
-
+                    <br />
+                    <a href="MarcaYCat.aspx?mar=2" class="btn btn-success btn lg">Registrar Marca</a>
+                    <br />
                 </div>
+                <div class="container col border border-primary mt-4">
                 <table class="table table-hover">
                     <%foreach (Dominio.Marca item in lismarca)
                         { %>
@@ -40,12 +47,13 @@
                     </tr>
                     <%}%>
                 </table>
-
+              </div>
             </div>
 
             <div class="col col-lg-4 col-md-6 col-sm-12 ">
+                <div class="container">
 
-                <%if (idcat > 0)
+                <%if (idcat > 0 || aux==1)
                     {%>
                     <div class="col">
                         <label class="from-group">Nombre:</label>
@@ -67,7 +75,7 @@
                 <%}
                     else
                     {
-                        if (idmarca > 0)
+                        if (idmarca > 0 || aux==2)
                         {%>
               
                     <div class="col">
@@ -86,9 +94,10 @@
                     }%>
                  <div class="container  text-center">
                     <br />
-                    <asp:Button ID="BtnGuardar" runat="server" OnClick="BtnGuardar_Click" type="submit" CssClass="btn btn-info" Text="Guardar" />
+                    <asp:Button ID="BtnGuardar" runat="server" Visible="false" OnClick="BtnGuardar_Click" type="submit" CssClass="btn btn-info" Text="Guardar" />
                 </div>
             </div>
+           </div>
         </div>
     </div>
 

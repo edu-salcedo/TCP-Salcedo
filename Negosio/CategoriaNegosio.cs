@@ -44,5 +44,23 @@ namespace Negosio
                 throw ex;
             }
         }
+
+        public void editar(Categoria cat)
+        {
+            try
+            {
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.setearQuery("update Categoria set Nombre=@nombre,imagen= @imagen  where Id=@id ");
+                conexion.agregarParametro("@id", cat.Id);
+                conexion.agregarParametro("@nombre", cat.Nombre);
+                conexion.agregarParametro("@imagen", cat.Imagen);
+                conexion.ejecutarAccion();
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
