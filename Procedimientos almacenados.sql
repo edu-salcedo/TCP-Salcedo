@@ -49,5 +49,48 @@ go
 
 	 exec SPInsertUsuario 'edu',123,1,'edu','salcedo',12345678,1222222,'edu@gmail.com','quintana 3155'
 
+go
+ --***************************************************************************************************
+  -----           PROCEDIMIENTOS ALMACENADOS PARA INSERTAR detalle Ventas
+ --***************************************************************************************************
 
-	 select *from DatosPersonales
+  create procedure insertDetalleVenta
+  @idproducto int,
+  @idventa int,
+  @precio money,
+  @cantidad int
+  as
+  begin 
+     insert into DetalleVenta(IdProducto,IdVenta,Precio,cantidad) values (@idproducto,@idventa,@precio,@cantidad)
+	 update Producto set Stock=Stock-@cantidad where id=@idproducto
+  end 
+  go
+ --*********************************************************************************
+--                  procedimiento lamacenado para insertar  Ventas 
+--*********************************************************************************
+
+  create procedure SPInsertVenta 
+  @idcliente int,
+  @fecha date,
+  @Importe int
+  as 
+   insert into Venta(idUsuario,Fecha,Importe)values (@idcliente,@fecha,@Importe)
+go
+
+ -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  --                  Vistas
+ -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  create view	WVusers
+as
+select U.NombreUsuario,D.Nombre,D.Apellido,D.Email,D.Direccion,D.Telefono,U.Id from Usuarios U inner join DatosPersonales D on D.Idusuario=U.Id
+
+
+
+
+--esta vista se usa para listar los usuarion en la web
+
+select NombreUsuario,Nombre,Apellido,Email,Direccion,Telefono from WVusers
+
+
+

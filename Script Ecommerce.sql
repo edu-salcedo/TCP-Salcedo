@@ -48,19 +48,10 @@ alter table DatosPersonales
 add constraint FK_DatosPersonales_IdUsuario foreign key (IdUsuario)references Usuarios (Id)
 go
 
-create table Venta (
-  Id int not null primary Key identity (1,1),
-  IdUsuario int not null foreign key references  Usuarios (Id),
-  Fecha date not null check(Fecha>=getdate()) default(getdate()),
-  Importe money not null check (Importe >0)
-)
-go
-
- select* from DatosPersonales 
 
 create table Producto (
    Id int not null primary Key identity (1,1),
-   UrlImagen varchar (900),
+   UrlImagen varchar (2000),
    Nombre varchar(50) not Null,
    Descripcion varchar (100) not null,
    idMarca int not null foreign key references Marca(id),
@@ -71,15 +62,24 @@ create table Producto (
 )
 go
 
+create table Venta (
+  Id int not null primary Key identity (1,1),
+  IdUsuario int not null foreign key references  Usuarios (Id),
+  Fecha date not null check(Fecha<=getdate()),
+  Importe money not null check (Importe >0)
+)
+go
+
 create table DetalleVenta (
    IdProducto int not null foreign key references Producto (Id),
    IdVenta int not null foreign key references Venta(Id),
    Precio money not  null check (Precio >0), 
    Cantidad int not null check (cantidad >0),
-   UrlImagen varchar (900),
-   Nombre varchar(50) not Null,
    primary key (IdProducto, IdVenta)
 )
+
+select*from Producto
+
 
 insert into TipoUsuario(Nombre) values('administrador')
 insert into TipoUsuario(Nombre) values('cliente')
@@ -106,7 +106,5 @@ values('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJJ5ZPUCrK2cGI-YY5
 insert into Producto(UrlImagen, Nombre,Descripcion,idMarca,idCategoria,Estado, Precio,Stock)
 values('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6P4sCvvlXGFN5YagsifYwYaveqaazzEiTRA&usqp=CAU','iPhone XR 64 GB','Reconocimiento facial para mayor seguridad',2,2,1,110000,5)
 
-select *from Marca
-select *from producto
 
   select P.Id idpro, P.UrlImagen, P.Nombre,P.Descripcion,M.id idMarca,M.Nombre marca,C.Id idCategoria,C.Nombre Cat ,P.Estado estado, P.Precio precio,P.Stock stock from Producto P ,Marca M, Categoria C where P.idmarca=M.id AND	P.IdCategoria=C.id
