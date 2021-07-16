@@ -63,6 +63,7 @@ namespace Ecommerce
         protected void salir_Click(object sender, EventArgs e)
         {
             Session["logeado"] = null;
+            Session["carrito"] = null;
             Response.Redirect("Catalogo.aspx");
         }
     }

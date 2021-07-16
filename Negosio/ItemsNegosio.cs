@@ -9,7 +9,7 @@ namespace Negosio
 {
      public class ItemsNegosio
     {
-        public void Registrar(Detalles nuevo)
+        public void Registrar(Items nuevo)
         {
             try
             {

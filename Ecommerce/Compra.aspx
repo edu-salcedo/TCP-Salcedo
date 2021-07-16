@@ -29,8 +29,12 @@
                 <%}%>
             </table>
 
+         <div class="text-center pt-5">
+            <asp:Button ID="btnComprar" runat="server" OnClick="btnComprar_Click" Text="Comprar" CssClass="btn btn-success" />
+         </div>
+
         </div>
-             <div class="col-12 col-md-3 pb-5 ms-4"> 
+             <div class="col-12 col-md-3 pb-5 ms-4 bg-dark"> 
                  <h4>tus datos</h4>
                    <div class="col">
                        <label class="from-group">Nombre:</label>
@@ -53,8 +57,9 @@
                        <label class="from-group">Direccion:</label>
                        <asp:TextBox ID="TexDireccion" runat="server" Class="form-control"></asp:TextBox>
                    </div>
-
-                      <asp:Button ID="btnComprar" runat="server" OnClick="btnComprar_Click" Text="Comprar" CssClass="btn btn-success" />
+               <div class="text-center ">
+                  <a href="UpdateUser.aspx?iduser=<%=usuario.id%>"  class="btn btn-warning"> Editar</a>
+               <div/>
                </div>
     </div>
 </div>

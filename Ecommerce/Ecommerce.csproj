@@ -91,6 +91,8 @@
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
     <Content Include="Error.aspx" />
+    <Content Include="FinalCompra.aspx" />
+    <Content Include="vhvj.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MarcaYCat.aspx" />
     <Content Include="Productos.aspx" />
@@ -107,6 +109,7 @@
     <Content Include="Style\Styles.css" />
     <Content Include="Style\UserStyle.css" />
     <Content Include="UpdateProducto.aspx" />
+    <Content Include="UpdateUser.aspx" />
     <Content Include="Ventas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -174,6 +177,20 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FinalCompra.aspx.cs">
+      <DependentUpon>FinalCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FinalCompra.aspx.designer.cs">
+      <DependentUpon>FinalCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vhvj.aspx.cs">
+      <DependentUpon>vhvj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vhvj.aspx.designer.cs">
+      <DependentUpon>vhvj.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,6 +233,13 @@
     </Compile>
     <Compile Include="UpdateProducto.aspx.designer.cs">
       <DependentUpon>UpdateProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateUser.aspx.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateUser.aspx.designer.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventas.aspx.cs">
       <DependentUpon>Ventas.aspx</DependentUpon>
