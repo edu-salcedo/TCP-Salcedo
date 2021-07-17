@@ -16,7 +16,7 @@ namespace Negosio
                 List<User> listaUser = new List<User>();
                 AccesoDatos conexion = new AccesoDatos();
                 conexion.conectar();
-                conexion.setearQuery("select NombreUsuario, Nombre, Apellido, Email, Direccion, Telefono tel,id from WVusers");
+                conexion.setearQuery("select NombreUsuario, Nombre, Apellido, Email, Direccion, Telefono tel,id,DNI from WVusers");
                 SqlDataReader lector = conexion.leer();
 
                 while (lector.Read())
@@ -29,6 +29,7 @@ namespace Negosio
                     aux.direccion = lector.GetString(4);
                     aux.telefono = (int)lector["tel"];
                     aux.id = (int)lector["id"];
+                    aux.DNI = (int)lector["DNI"];
                     listaUser.Add(aux);
                 }
                 conexion.cerrarConexion();
@@ -79,7 +80,6 @@ namespace Negosio
             try
             {
                 AccesoDatos conexion = new AccesoDatos();
-                //conexion.setearQuery("insert into usuario ( username,password,idtipo)values( @user, @pass, @nombren, @apellido, @tel, @tipo, @mail)");
                 conexion.setearSP("SPInsertUsuario");   // procedimiento lamacenado pra registrar un usuario
                 conexion.agregarParametro("@Username", nuevo.Usuario);
                 conexion.agregarParametro("@contrasena", nuevo.Contrasena);
@@ -92,6 +92,30 @@ namespace Negosio
                 conexion.agregarParametro("@direccion", nuevo.direccion);
 
                 conexion.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void editar(User nuevo)
+        {
+            try
+            {
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.setearQuery("update DatosPersonales set Nombre=@nombre,Apellido=@apellido,DNI=@dni,Telefono=@telefono,Email=@mail, Direccion=@direccion where Idusuario=@id");
+                conexion.agregarParametro("@id", nuevo.id);
+
+                conexion.agregarParametro("@nombre", nuevo.Nombre);
+                conexion.agregarParametro("@apellido", nuevo.Apellido);
+                conexion.agregarParametro("@dni", nuevo.DNI);
+                conexion.agregarParametro("@telefono", nuevo.telefono);
+                conexion.agregarParametro("@mail", nuevo.mail);
+                conexion.agregarParametro("@direccion", nuevo.direccion);
+
+                conexion.ejecutarAccion();
+                conexion.cerrarConexion();
             }
             catch (Exception ex)
             {

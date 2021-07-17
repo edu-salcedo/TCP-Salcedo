@@ -11,31 +11,34 @@ namespace Ecommerce
 {
     public partial class Compra : System.Web.UI.Page
     {
+        public int tipo;
+        public int tipopago;
         public List<Cart> carrito = new List<Cart>();
         public User usuario;
         public List<User> lisUser = new List<User>();
         protected void Page_Load(object sender, EventArgs e)
         {
             UserNegosio usuarioNegosio = new UserNegosio();
-    
+
+            if (Session["Logeado"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            try
+            {
                 lisUser = usuarioNegosio.listar();
-                if (Session["Logeado"] == null)
-                {
-                    Response.Redirect("Login.aspx");
-                }
-                else
-                {
-                    usuario = new User();
-                    usuario = (User)Session["Logeado"];
-                }
+                usuario = new User();
+                usuario = (User)Session["Logeado"];
+
                 if (usuario.id > 0)
                 {
                     usuario = Buscar_Usuario(usuario.id);
-                    Texnombre.Text = usuario.Nombre;
-                    Texapellido.Text = usuario.Apellido;
-                    TexMail.Text = usuario.mail;
-                    TexDireccion.Text = usuario.direccion;
-                    Textelefono.Text = Convert.ToString(usuario.telefono);
+                    lbnombre.Text = "nombre : "+ usuario.Nombre;
+                    lbapellido.Text = usuario.Apellido;
+                    lbdni.Text ="DNI : " +Convert.ToString( usuario.DNI);
+                    lbmail.Text = "Correo : "+usuario.mail;
+                    lbdireccion.Text = "Dirección : "+ usuario.direccion;
+                    lbtelefono.Text = "Telefono : "+Convert.ToString(usuario.telefono);
                 }
                 if (Session["carrito"] == null)
                 {
@@ -45,6 +48,32 @@ namespace Ecommerce
                 {
                     carrito = (List<Cart>)Session["carrito"];
                 }
+                tipo = Convert.ToInt32(Request.QueryString["tipopago"]);
+                switch (tipo)
+                {
+                    case 1:
+                        lbMetodopago.Text = "Metodo de pago : Mastercard";
+                        tipopago = 2;
+                        break;
+                    case 2:
+                        lbMetodopago.Text = "Metodo de pago : Visa";
+                        tipopago = 3;
+                        break;
+                    case 3:
+                        lbMetodopago.Text = "Metodo de pago : mercado pago";
+                        tipopago = 1;
+                        break;
+                    case 4:
+                        lbMetodopago.Text = "Metodo de pago : Rapipago";
+                        tipopago = 4;
+                        break;
+                }
+
+            }
+            catch
+            {
+                Response.Redirect("Error.aspx");
+            }
         }
 
         User Buscar_Usuario(int id)
@@ -70,12 +99,15 @@ namespace Ecommerce
             ItemsNegosio itemCart = new ItemsNegosio();
             VentaNegosio neg = new VentaNegosio();
 
+            try
+            {
                 foreach (Cart item in carrito)
                 {
                     venta.Importe += item.Precio;
                 }
                 venta.idUsuario = usuario.id;
                 venta.FechaVenta = DateTime.Now;
+                venta.tipo = tipopago;
                 neg.Registrar(venta); //registramos la venta
                 id = neg.BuscarID();
                 foreach (Cart item in carrito)             //  por cada producto el el carrito insertamos el detalle
@@ -86,11 +118,16 @@ namespace Ecommerce
                     detalleVenta.Precio = item.Precio;
                     itemCart.Registrar(detalleVenta);
                 }
-
-                Session["compra"] = carrito;
-                Session["carrito"] = null;  // se eliminan los productos de carrito 
-                Response.Redirect("FinalCompra.aspx");
+            }
+            catch
+            {
+                Response.Redirect("Error.aspx");
+            }
+            Session["compra"] = carrito;
+            Session["carrito"] = null;  // se eliminan los productos de carrito 
+            Response.Redirect("FinalCompra.aspx");
 
         }
+
     }
 }

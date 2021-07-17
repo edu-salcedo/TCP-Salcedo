@@ -3,67 +3,124 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="text-center"> 
-      <h2>resumen de tu compra</h2> 
-    </div> 
 
-<div class="container pt-5">
-    <div class="row p-2">
-        <div class="col-12 col-md-8 me-5">
-            <table class="table table-hover">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Cantidad</th>
-                </tr>
-                <%foreach (Dominio.Cart item in carrito)
-                    { %>
-                <tr>
-          <%--          <td>
-                        <img src="<%=item.ImagenPro %>" alt="No hay imagen" width="100" height="100" /></td>--%>
-                    <td><%=item.NombrePro %></td>
-                    <td><%=string.Format("{0:C}",item.Precio) %></td>
-                    <td><%=item.Cantidad%></td>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <style>
+        .titulo {
+            font-size: 3rem;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 2rem;
+        }
 
-                </tr>
-                <%}%>
-            </table>
+        .titulo2 {
+            font-size: 2rem;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: cadetblue;
+            border-radius: 3px;
+        }
+    </style>
 
-         <div class="text-center pt-5">
-            <asp:Button ID="btnComprar" runat="server" OnClick="btnComprar_Click" Text="Comprar" CssClass="btn btn-success" />
-         </div>
+    <div class="container-fluid pt-3">
+        <div class="row ">
+            <div class="col-lg-4 col-md-12 mx-3 px-4 ">
 
+                <div class="titulo2">
+                    <p>Tus Datos</p>
+                </div>
+
+                <div class="col">
+                    <asp:Label ID="lbnombre" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lbapellido" runat="server" Text="Label"></asp:Label>
+                </div>
+
+                <div class="col">
+                    <asp:Label ID="lbdni" runat="server" Text="Label"></asp:Label>
+                </div>
+
+                <div class="col">
+                    <asp:Label ID="lbdireccion" runat="server" Text="Label"></asp:Label>
+                </div>
+
+                <div class="col">
+                    <asp:Label ID="lbtelefono" runat="server" Text="Label"></asp:Label>
+                </div>
+                <div class="col">
+                    <asp:Label ID="lbmail" runat="server" Text="Label"></asp:Label>
+                </div>
+
+                <div class="text-center py-3 ">
+                    <a href="UpdateUser.aspx?iduser=<%=usuario.id%>" class="btn btn-warning">Editar Datos</a>
+                </div>
+
+
+            </div>
+
+
+            <div class="col-lg-7 col-md-12 mx-3 px-4 ">
+                <div class="titulo">
+                    <p>Resumen de tu compra</p>
+                </div>
+                <table class="table table-hover">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                    </tr>
+                    <%foreach (Dominio.Cart item in carrito)
+                        { %>
+                    <tr>
+                        <%--      <td>
+                      <img src="<%=item.ImagenPro %>" alt="No hay imagen" width="100" height="100" /></td>--%>
+                        <td><%=item.NombrePro %></td>
+                        <td><%=string.Format("{0:C}",item.Precio) %></td>
+                        <td><%=item.Cantidad%></td>
+
+                    </tr>
+                    <%}%>
+                </table>
+
+
+            </div>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 my-3">
+                            <div>
+                                <p class="text-center" style="font-size: 1.5rem;">metodos de pago</p>
+                                <a class="navbar-brand" href="Compra.aspx?tipopago=1"><span>
+                                    <img src="img/mastercard.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
+
+                                <a class="navbar-brand" href="Compra.aspx?tipopago=2"><span>
+                                    <img src="img/visa.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
+
+                                <a class="navbar-brand" href="Compra.aspx?tipopago=4"><span>
+                                    <img src="img/mercadopago.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
+
+                                <a class="navbar-brand" href="Compra.aspx?tipopago=3"><span>
+                                    <img src="img/rapipago.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 my-5">
+                            <div class="row">
+
+                            <div class="col-6">
+                                 <asp:Label ID="lbMetodopago" runat="server" Text="Metodo de pago : "></asp:Label>
+                            </div>
+
+                            <div class="col-6">
+                                <asp:Button ID="btnComprar" runat="server" OnClick="btnComprar_Click" Text="Comprar" CssClass="btn btn-success" />
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
-             <div class="col-12 col-md-3 pb-5 ms-4 bg-dark"> 
-                 <h4>tus datos</h4>
-                   <div class="col">
-                       <label class="from-group">Nombre:</label>
-                       <asp:TextBox ID="Texnombre" runat="server" Class="form-control"></asp:TextBox>
-                   </div>
-                   <div class="col">
-                       <label class="from-group">Apellido:</label>
-                       <asp:TextBox ID="Texapellido" runat="server" Class="form-control"></asp:TextBox>
-                   </div>
-                   <div class="col">
-                       <label class="from-group">Mail:</label>
-                       <asp:TextBox ID="TexMail" runat="server" Class="form-control"></asp:TextBox>
-                   </div>
-                   <div class="col">
-                       <label class="from-group">Telefono:</label>
-                       <asp:TextBox ID="Textelefono" runat="server" Class="form-control"></asp:TextBox>
-
-                   </div>
-                   <div class="col">
-                       <label class="from-group">Direccion:</label>
-                       <asp:TextBox ID="TexDireccion" runat="server" Class="form-control"></asp:TextBox>
-                   </div>
-               <div class="text-center ">
-                  <a href="UpdateUser.aspx?iduser=<%=usuario.id%>"  class="btn btn-warning"> Editar</a>
-               <div/>
-               </div>
     </div>
-</div>
-
 
 
 </asp:Content>

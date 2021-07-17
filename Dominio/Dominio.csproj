@@ -47,6 +47,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="Domicilio.cs" />
+    <Compile Include="Pagos.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Producto.cs" />

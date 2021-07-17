@@ -92,7 +92,6 @@
     <Content Include="Detalle.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="FinalCompra.aspx" />
-    <Content Include="vhvj.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MarcaYCat.aspx" />
     <Content Include="Productos.aspx" />
@@ -183,13 +182,6 @@
     </Compile>
     <Compile Include="FinalCompra.aspx.designer.cs">
       <DependentUpon>FinalCompra.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="vhvj.aspx.cs">
-      <DependentUpon>vhvj.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="vhvj.aspx.designer.cs">
-      <DependentUpon>vhvj.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

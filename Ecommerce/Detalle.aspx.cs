@@ -16,22 +16,17 @@ namespace Ecommerce
        public List<Producto> listaProducto;
         protected void Page_Load(object sender, EventArgs e)
         {
+             List<Producto> aux=new List<Producto>();
             try
             {
 
                 ProductoNegosio negocio = new ProductoNegosio();
                 idArticulo = Convert.ToInt32(Request.QueryString["idArticulo"]);
-                listaProducto = negocio.listar();             
-                Prodetalle= Buscar(listaProducto, idArticulo);
-                if (Session["Similares"]!=null)
-                {
-                    Session.Add("Similares", new List<Producto>());
-                }
-                else
-                {
+                aux = negocio.listar();             
+                Prodetalle= Buscar(aux, idArticulo);
                     
-                    listaProducto = listaProducto.FindAll(x => x.categoria.Nombre.Contains(Prodetalle.categoria.Nombre));
-                }
+                listaProducto = aux.FindAll(x => x.categoria.Nombre.Contains(Prodetalle.categoria.Nombre));
+                listaProducto.Remove(listaProducto.Find(x => x.Id==idArticulo));
             }
             catch
             {

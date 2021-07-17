@@ -32,7 +32,7 @@ namespace Ecommerce
                 {
                     Response.Redirect("Productos.aspx");
                 }
-                if (nuevo.tipo == 2 & Session["carrito"] == null)
+                if (nuevo.tipo == 2 & Session["carrito"] == null|| Session["compra"]==null)
                 {
                     Response.Redirect("Catalogo.aspx");
                 }

@@ -77,6 +77,18 @@ create table DetalleVenta (
    Cantidad int not null check (cantidad >0),
    primary key (IdProducto, IdVenta)
 )
+go
+create table TipoPago (
+Id int not null primary Key identity (1,1),
+Nombre varchar(50) not Null
+)
+go
+create table Pagos (
+IdVenta int not null primary Key,
+IdTipo int not null foreign key references TipoPago(id),
+Importe money not  null check (Importe >0)
+)
+select *from Pagos
 
 select*from Producto
 
@@ -107,4 +119,14 @@ insert into Producto(UrlImagen, Nombre,Descripcion,idMarca,idCategoria,Estado, P
 values('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6P4sCvvlXGFN5YagsifYwYaveqaazzEiTRA&usqp=CAU','iPhone XR 64 GB','Reconocimiento facial para mayor seguridad',2,2,1,110000,5)
 
 
+insert into TipoPago (Nombre)values('MercadoPago')
+insert into TipoPago (Nombre)values('Targeta de credito')
+insert into TipoPago (Nombre)values('Targeta de Debito')
+insert into TipoPago (Nombre)values('Rapipago')
+
   select P.Id idpro, P.UrlImagen, P.Nombre,P.Descripcion,M.id idMarca,M.Nombre marca,C.Id idCategoria,C.Nombre Cat ,P.Estado estado, P.Precio precio,P.Stock stock from Producto P ,Marca M, Categoria C where P.idmarca=M.id AND	P.IdCategoria=C.id
+
+
+  select *from TipoPago 
+
+  select* from Venta V left join Pagos P on V.Id=P.IdVenta

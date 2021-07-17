@@ -48,6 +48,7 @@ namespace Negosio
                 conexion.agregarParametro("@idcliente", nuevo.idUsuario);
                 conexion.agregarParametro("@fecha", nuevo.FechaVenta);
                 conexion.agregarParametro("@Importe", nuevo.Importe);
+                conexion.agregarParametro("@tipopago", nuevo.tipo);
                 conexion.ejecutarAccion();
             }
             catch (Exception ex)

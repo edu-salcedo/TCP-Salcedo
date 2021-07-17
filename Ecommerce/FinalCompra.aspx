@@ -7,19 +7,20 @@
     <style>
         .titulo{
             text-justify:auto;
+            font-size:3rem;
             font-family:Bahnschrift;
             color:brown;
         }
     </style>
 
-    <div class="container">
+    <div class="container ">
         <div class="titulo">
-           <h3>Felicitaciones ha realizado la compra con exito</h3>
+           <p >Felicitaciones ha realizado la compra con exito</p>
         </div>
         <div class="container">
 
             <h3>este es el detalle de tu compra</h3>
-            <div class="col-12">
+            <div class="col-12 modal-content">
                 <table class="table">
                     <tr>
                         <th scope="col">Nombre</th>

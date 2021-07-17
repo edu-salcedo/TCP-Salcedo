@@ -13,5 +13,6 @@ namespace Dominio
         public int idUsuario { get; set; }
         public DateTime FechaVenta { get; set; }
         public decimal Importe { get; set; }
+        public int tipo { get; set; }
     }
 }

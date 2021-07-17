@@ -72,18 +72,23 @@ go
   create procedure SPInsertVenta 
   @idcliente int,
   @fecha date,
-  @Importe int
+  @Importe int,
+  @tipopago int
   as 
+    declare @idventa int
    insert into Venta(idUsuario,Fecha,Importe)values (@idcliente,@fecha,@Importe)
+   set @idventa=(select max(id)from Venta)
+   insert into Pagos(idVenta,Idtipo,Importe) values (@idventa,@tipopago,@Importe)
 go
+
 
  -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   --                  Vistas
  -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  create view	WVusers
+ create view	WVusers
 as
-select U.NombreUsuario,D.Nombre,D.Apellido,D.Email,D.Direccion,D.Telefono,U.Id from Usuarios U inner join DatosPersonales D on D.Idusuario=U.Id
+select U.NombreUsuario,D.Nombre,D.Apellido,D.DNI, D.Email,D.Direccion,D.Telefono,U.Id from Usuarios U inner join DatosPersonales D on D.Idusuario=U.Id
 
 
 
@@ -93,4 +98,4 @@ select U.NombreUsuario,D.Nombre,D.Apellido,D.Email,D.Direccion,D.Telefono,U.Id f
 select NombreUsuario,Nombre,Apellido,Email,Direccion,Telefono from WVusers
 
 
-
+select *from Venta V inner join pagos P on P.idventa=V.id
