@@ -95,6 +95,7 @@
     <Content Include="Login.aspx" />
     <Content Include="MarcaYCat.aspx" />
     <Content Include="Productos.aspx" />
+    <Content Include="prueva.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -205,6 +206,13 @@
       <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="prueva.aspx.cs">
+      <DependentUpon>prueva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prueva.aspx.designer.cs">
+      <DependentUpon>prueva.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
