@@ -17,7 +17,7 @@ namespace Negosio
                 List<Venta> listaVenta = new List<Venta>();
                 AccesoDatos conexion = new AccesoDatos();
                 conexion.conectar();
-                conexion.setearQuery("select id, IdUsuario,Fecha,Importe from Venta");
+                conexion.setearQuery("select id, IdUsuario,Fecha,Importe,TipoPago from Venta");
                 SqlDataReader lector = conexion.leer();
 
                 while (lector.Read())
@@ -27,6 +27,7 @@ namespace Negosio
                     aux.idUsuario = lector.GetInt32(1);
                     aux.FechaVenta= (DateTime)lector["Fecha"];
                     aux.Importe= (decimal)lector["Importe"];
+                    aux.tipoPago= lector.GetInt32(5);
                     listaVenta.Add(aux);
                 }
                 conexion.cerrarConexion();
@@ -48,7 +49,7 @@ namespace Negosio
                 conexion.agregarParametro("@idcliente", nuevo.idUsuario);
                 conexion.agregarParametro("@fecha", nuevo.FechaVenta);
                 conexion.agregarParametro("@Importe", nuevo.Importe);
-                conexion.agregarParametro("@tipopago", nuevo.tipo);
+                conexion.agregarParametro("@tipopago", nuevo.tipoPago);
                 conexion.ejecutarAccion();
             }
             catch (Exception ex)

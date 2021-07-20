@@ -107,7 +107,7 @@ namespace Ecommerce
                 }
                 venta.idUsuario = usuario.id;
                 venta.FechaVenta = DateTime.Now;
-                venta.tipo = tipopago;
+                venta.tipoPago = tipopago;
                 neg.Registrar(venta); //registramos la venta
                 id = neg.BuscarID();
                 foreach (Cart item in carrito)             //  por cada producto el el carrito insertamos el detalle
@@ -124,6 +124,7 @@ namespace Ecommerce
                 Response.Redirect("Error.aspx");
             }
             Session["compra"] = carrito;
+            Session["venta"] = venta;
             Session["carrito"] = null;  // se eliminan los productos de carrito 
             Response.Redirect("FinalCompra.aspx");
 

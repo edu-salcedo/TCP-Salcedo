@@ -13,15 +13,27 @@ namespace Ecommerce
         public List<Cart> listacompra = new List<Cart>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["compra"] == null)
+           List<Items> itemsCarrito = new List<Items>();
+            Venta ven = new Venta();
+
+            if (Session["logeado"] == null)
             {
                 Response.Redirect("Catalogo.aspx");
+            }
+
+            if (Session["compra"] == null || Session["venta"]==null)
+            {
+                    
             }
             else
             {
                 listacompra = (List<Cart>)Session["compra"];
+
+                ven = (Venta)Session["venta"];
             }
 
+            lbfecha.Text =Convert.ToString( ven.FechaVenta);
+            lbtipopago.Text= Convert.ToString(ven.tipoPago);
 
 
         }

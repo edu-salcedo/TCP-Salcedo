@@ -74,7 +74,7 @@
                 </div>
           </div>
           <div class="text-end px-5 ">                
-              <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label><br>
+
            
              <hr/>
                   <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label><br>

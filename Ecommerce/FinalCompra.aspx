@@ -4,45 +4,76 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <style>
+
+     <style>
         .titulo{
-            text-justify:auto;
-            font-size:3rem;
+        
+            font-size:2.5rem;
             font-family:Bahnschrift;
             color:brown;
         }
     </style>
-
-    <div class="container ">
-        <div class="titulo">
+    <div class="container  alert-secondary">
+        <div class="text-center titulo">
            <p >Felicitaciones ha realizado la compra con exito</p>
         </div>
-        <div class="container">
 
-            <h3>este es el detalle de tu compra</h3>
+    </div>
+    <div class="container form-control ">
+        <hr/>
+
+        <div class="row ">
+            <div class="col-6 ps-4">
+                 <asp:Label ID="lbnombre" runat="server" Text="Label"></asp:Label><br>     
+                 <asp:Label ID="lbdireccion" runat="server" Text="Label"></asp:Label><br>
+                 <asp:Label ID="lbtelefono" runat="server" Text="Label"></asp:Label><br>
+                 <asp:Label ID="lbtipopago" runat="server" Text="Label"></asp:Label><br>
+
+            </div>
+            <div class="col-3">
+                 <asp:Label ID="lbfecha" runat="server" Text="dni"></asp:Label><br>
+            </div>
+            <div class="col-3">
+                 <asp:Label ID="lbdni" runat="server" Text="fecha"></asp:Label><br>
+            </div>
+        </div>
+        <hr/>
+        <asp:Label ID="Label4" runat="server" Text="Metodo de pago"></asp:Label><br>
+        <hr/>
+        <div class="container p-3">
             <div class="col-12 modal-content">
                 <table class="table">
-                    <tr>
+                    <tr class="alert-primary">
                         <th scope="col">Nombre</th>
                         <th scope="col">Precio Unitario</th>
                         <th scope="col">Cantidad</th>
+                        <th scope="col">Subtotal</th>
+
                     </tr>
                     <%foreach (Dominio.Cart item in listacompra)
+    
                         { %>
                     <tr>
                         <td><%=item.NombrePro %></td>
                         <td><%=string.Format("{0:C}",item.Precio) %></td>
                         <td><%=item.Cantidad%></td>
-
+                        <td><%=item.Cantidad*item.Precio %> </td>
                     </tr>
                     <%}%>
                 </table>
-            </div>
-        </div>
+                </div>
+          </div>
+          <div class="text-end px-5 ">                
+             <hr/>
+                  <asp:Label ID="lbtotal" runat="server" Text=""></asp:Label><br>
+             <hr/>
 
-        <div>
+          </div>
+
+</div>
+        <div class="text-center m-4">
            <a href="Catalogo.aspx" class="btn btn-primary">Seguir navegando</a>
         </div>
-    </div>
+
 
 </asp:Content>

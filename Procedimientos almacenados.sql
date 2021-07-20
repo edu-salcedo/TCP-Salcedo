@@ -69,7 +69,7 @@ go
 --                  procedimiento lamacenado para insertar  Ventas 
 --*********************************************************************************
 
-  create procedure SPInsertVenta 
+ create procedure SPInsertVenta 
   @idcliente int,
   @fecha date,
   @Importe int,
@@ -77,8 +77,6 @@ go
   as 
     declare @idventa int
    insert into Venta(idUsuario,Fecha,Importe)values (@idcliente,@fecha,@Importe)
-   set @idventa=(select max(id)from Venta)
-   insert into Pagos(idVenta,Idtipo,Importe) values (@idventa,@tipopago,@Importe)
 go
 
 
@@ -99,3 +97,16 @@ select NombreUsuario,Nombre,Apellido,Email,Direccion,Telefono from WVusers
 
 
 select *from Venta V inner join pagos P on P.idventa=V.id
+
+
+
+
+
+select V.Id,V.Fecha,V.IdUsuario,V.Importe from Venta V inner join DetalleVenta DV on DV.IdVenta=V.Id inner join TipoPago TP on TP.Id=V.TipoPago
+
+select * from Venta V inner join DetalleVenta DV on DV.IdVenta=V.Id inner join TipoPago TP on TP.Id=V.TipoPago
+
+
+
+
+
