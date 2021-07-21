@@ -22,23 +22,28 @@
     <div class="container form-control ">
         <hr/>
 
+        <div class="text-center">
+              
+            <h3>Detalle de tu compra</h3>
+            <hr />
+        </div>
+
         <div class="row ">
             <div class="col-6 ps-4">
                  <asp:Label ID="lbnombre" runat="server" Text="Label"></asp:Label><br>     
                  <asp:Label ID="lbdireccion" runat="server" Text="Label"></asp:Label><br>
-                 <asp:Label ID="lbtelefono" runat="server" Text="Label"></asp:Label><br>
-                 <asp:Label ID="lbtipopago" runat="server" Text="Label"></asp:Label><br>
+                 <asp:Label ID="lbtelefono" runat="server" Text="Label"></asp:Label><br>                
 
             </div>
-            <div class="col-3">
-                 <asp:Label ID="lbfecha" runat="server" Text="dni"></asp:Label><br>
-            </div>
-            <div class="col-3">
+            <div class="col-2">
                  <asp:Label ID="lbdni" runat="server" Text="fecha"></asp:Label><br>
+            </div>
+            <div class="col-4">
+                 <asp:Label ID="lbfecha" runat="server" Text="dni"></asp:Label><br>
             </div>
         </div>
         <hr/>
-        <asp:Label ID="Label4" runat="server" Text="Metodo de pago"></asp:Label><br>
+        <asp:Label ID="lbtipopago" runat="server" Text="Label"></asp:Label><br>
         <hr/>
         <div class="container p-3">
             <div class="col-12 modal-content">
@@ -57,7 +62,7 @@
                         <td><%=item.NombrePro %></td>
                         <td><%=string.Format("{0:C}",item.Precio) %></td>
                         <td><%=item.Cantidad%></td>
-                        <td><%=item.Cantidad*item.Precio %> </td>
+                        <td><%= string.Format("{0:C}",item.Cantidad*item.Precio) %> </td>
                     </tr>
                     <%}%>
                 </table>

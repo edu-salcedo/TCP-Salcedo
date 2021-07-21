@@ -13,6 +13,7 @@ namespace Ecommerce
     {
         UserNegosio userneg = new UserNegosio();
         User nuevo = new User();
+        List<User> listausuarios = new List<User>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -27,6 +28,14 @@ namespace Ecommerce
             nuevo = userneg.Verificar(aux);
             if (nuevo.id > 0)
             {
+                listausuarios = userneg.listar();
+                aux = listausuarios.Find(x => x.id == nuevo.id);
+                nuevo.Nombre = aux.Nombre;
+                nuevo.Apellido = aux.Apellido;
+                nuevo.DNI = aux.DNI;
+                nuevo.direccion = aux.direccion;
+                nuevo.telefono = aux.telefono;
+                
                 Session["Logeado"] = nuevo;
                 if (nuevo.tipo == 1)
                 {

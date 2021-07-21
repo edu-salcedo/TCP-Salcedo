@@ -42,13 +42,13 @@ namespace Ecommerce
         protected global::System.Web.UI.WebControls.Label lbtelefono;
 
         /// <summary>
-        /// lbtipopago control.
+        /// lbdni control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbtipopago;
+        protected global::System.Web.UI.WebControls.Label lbdni;
 
         /// <summary>
         /// lbfecha control.
@@ -60,22 +60,13 @@ namespace Ecommerce
         protected global::System.Web.UI.WebControls.Label lbfecha;
 
         /// <summary>
-        /// lbdni control.
+        /// lbtipopago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbdni;
-
-        /// <summary>
-        /// Label4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lbtipopago;
 
         /// <summary>
         /// lbtotal control.

@@ -15,12 +15,13 @@ namespace Ecommerce
         {
            List<Items> itemsCarrito = new List<Items>();
             Venta ven = new Venta();
+            User usuario = new User();
 
             if (Session["logeado"] == null)
             {
                 Response.Redirect("Catalogo.aspx");
             }
-
+            usuario = (User)Session["logeado"];
             if (Session["compra"] == null || Session["venta"]==null)
             {
                     
@@ -28,13 +29,17 @@ namespace Ecommerce
             else
             {
                 listacompra = (List<Cart>)Session["compra"];
-
                 ven = (Venta)Session["venta"];
             }
 
-            lbfecha.Text =Convert.ToString( ven.FechaVenta);
-            lbtipopago.Text= Convert.ToString(ven.tipoPago);
+            lbfecha.Text = "Fecha :  "+Convert.ToString( ven.FechaVenta);
+            lbtipopago.Text= "Metodo de Pago : "+ Convert.ToString(ven.tipoPago);
+            lbnombre.Text = "Nombre : "+usuario.Nombre;
+            lbtelefono.Text = "Telefono : "+ Convert.ToString(usuario.telefono);
+            lbdireccion.Text= "Direccion : "+Convert.ToString(usuario.direccion);
+            lbdni.Text="DNI : "+Convert.ToString(usuario.DNI);
 
+            lbtotal.Text = "Total : "+ Convert.ToString(ven.Importe);
 
         }
 
