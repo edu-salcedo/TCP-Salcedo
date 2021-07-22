@@ -65,10 +65,13 @@ go
 create table Venta (
   Id int not null primary Key identity (1,1),
   IdUsuario int not null foreign key references  Usuarios (Id),
-  Fecha date not null check(Fecha<=getdate()),
+  Fecha datetime not null,
   Importe money not null check (Importe >0),
   Tipopago int not null foreign key references TipoPago(id)
 )
+
+select GETDATE()
+
 go
 create table DetalleVenta (
    IdProducto int not null foreign key references Producto (Id),
@@ -77,6 +80,7 @@ create table DetalleVenta (
    Cantidad int not null check (cantidad >0),
    primary key (IdProducto, IdVenta)
 )
+
 go
 create table TipoPago (
 Id int not null primary Key identity (1,1),

@@ -11,7 +11,7 @@ namespace Ecommerce
 {
 
 
-    public partial class Site1
+    public partial class DetalleCompra
     {
 
         /// <summary>
@@ -24,75 +24,75 @@ namespace Ecommerce
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
-        /// vistaadmin control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor vistaadmin;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Micompra control.
+        /// lbnombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Micompra;
+        protected global::System.Web.UI.WebControls.Label lbnombre;
 
         /// <summary>
-        /// Iniciar control.
+        /// lbdireccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Iniciar;
+        protected global::System.Web.UI.WebControls.Label lbdireccion;
 
         /// <summary>
-        /// txtUsuario control.
+        /// lbtelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtUsuario;
+        protected global::System.Web.UI.WebControls.Label lbtelefono;
 
         /// <summary>
-        /// salir control.
+        /// lbdni control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button salir;
+        protected global::System.Web.UI.WebControls.Label lbdni;
 
         /// <summary>
-        /// TexBuscar control.
+        /// lbfecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TexBuscar;
+        protected global::System.Web.UI.WebControls.Label lbfecha;
 
         /// <summary>
-        /// btnBuscar control.
+        /// lbtipopago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.Label lbtipopago;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// lbtotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Label lbtotal;
     }
 }

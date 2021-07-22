@@ -90,15 +90,16 @@
                             <div>
                                 <p class="text-center" style="font-size: 1.5rem;">metodos de pago</p>
                                 <a class="navbar-brand" href="Compra.aspx?tipopago=1"><span>
-                                    <img src="img/mastercard.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
-
-                                <a class="navbar-brand" href="Compra.aspx?tipopago=2"><span>
-                                    <img src="img/visa.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
-
-                                <a class="navbar-brand" href="Compra.aspx?tipopago=4"><span>
                                     <img src="img/mercadopago.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
 
+                                <a class="navbar-brand" href="Compra.aspx?tipopago=2"><span>
+                                    <img src="img/mastercard.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
+
                                 <a class="navbar-brand" href="Compra.aspx?tipopago=3"><span>
+                                    <img src="img/visa.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
+
+
+                                <a class="navbar-brand" href="Compra.aspx?tipopago=4"><span>
                                     <img src="img/rapipago.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
 
                             </div>

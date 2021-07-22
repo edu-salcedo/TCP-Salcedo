@@ -14,8 +14,14 @@ namespace Ecommerce
         UserNegosio userneg = new UserNegosio();
         User nuevo = new User();
         List<User> listausuarios = new List<User>();
+        List<Cart> carrito;
         protected void Page_Load(object sender, EventArgs e)
         {
+            carrito = new List<Cart>();
+            if (Session["carrito"]!=null)
+            {
+                carrito = (List<Cart>)Session["carrito"];
+            }
 
         }
 
@@ -37,11 +43,12 @@ namespace Ecommerce
                 nuevo.telefono = aux.telefono;
                 
                 Session["Logeado"] = nuevo;
+
                 if (nuevo.tipo == 1)
                 {
                     Response.Redirect("Productos.aspx");
                 }
-                if (nuevo.tipo == 2 & Session["carrito"] == null|| Session["compra"]==null)
+                if (nuevo.tipo == 2 & carrito.Count==0)
                 {
                     Response.Redirect("Catalogo.aspx");
                 }

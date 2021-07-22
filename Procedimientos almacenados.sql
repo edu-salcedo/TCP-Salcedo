@@ -76,7 +76,7 @@ go
   @tipopago int
   as 
     declare @idventa int
-   insert into Venta(idUsuario,Fecha,Importe)values (@idcliente,@fecha,@Importe)
+   insert into Venta(idUsuario,Fecha,Importe,TipoPago)values (@idcliente,GETDATE(),@Importe,@tipopago)
 go
 
 
@@ -84,27 +84,29 @@ go
   --                  Vistas
  -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+--esta vista se usa para listar los usuarion en la web
+
  create view	WVusers
 as
 select U.NombreUsuario,D.Nombre,D.Apellido,D.DNI, D.Email,D.Direccion,D.Telefono,U.Id from Usuarios U inner join DatosPersonales D on D.Idusuario=U.Id
 
-
-
-
---esta vista se usa para listar los usuarion en la web
-
 select NombreUsuario,Nombre,Apellido,Email,Direccion,Telefono from WVusers
 
 
-select *from Venta V inner join pagos P on P.idventa=V.id
+--esta vista se usa para listar los ventas  en la web
+
+
+create view WVCompras
+as
+select V.Id,V.IdUsuario,V.Fecha,V.Importe,P.Id Tipopago,P.Nombre MetodoPago  from Venta V left join TipoPago P on P.Id=V.TipoPago
 
 
 
 
+select* from DetalleVenta  where IdVenta=2
 
-select V.Id,V.Fecha,V.IdUsuario,V.Importe from Venta V inner join DetalleVenta DV on DV.IdVenta=V.Id inner join TipoPago TP on TP.Id=V.TipoPago
 
-select * from Venta V inner join DetalleVenta DV on DV.IdVenta=V.Id inner join TipoPago TP on TP.Id=V.TipoPago
+
 
 
 

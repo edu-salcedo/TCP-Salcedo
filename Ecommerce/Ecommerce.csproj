@@ -90,6 +90,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="Detalle.aspx" />
+    <Content Include="DetalleCompra.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="FinalCompra.aspx" />
     <Content Include="Login.aspx" />
@@ -111,6 +112,7 @@
     <Content Include="UpdateProducto.aspx" />
     <Content Include="UpdateUser.aspx" />
     <Content Include="Ventas.aspx" />
+    <Content Include="VistaClientes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +171,13 @@
     </Compile>
     <Compile Include="Detalle.aspx.designer.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleCompra.aspx.cs">
+      <DependentUpon>DetalleCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleCompra.aspx.designer.cs">
+      <DependentUpon>DetalleCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
@@ -247,6 +256,13 @@
     </Compile>
     <Compile Include="Ventas.aspx.designer.cs">
       <DependentUpon>Ventas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VistaClientes.aspx.cs">
+      <DependentUpon>VistaClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VistaClientes.aspx.designer.cs">
+      <DependentUpon>VistaClientes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

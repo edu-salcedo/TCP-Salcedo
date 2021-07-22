@@ -14,5 +14,6 @@ namespace Dominio
         public DateTime FechaVenta { get; set; }
         public decimal Importe { get; set; }
         public int tipoPago { get; set; }
+        public string metodoPago { get; set; }
     }
 }

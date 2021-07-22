@@ -14,23 +14,20 @@ namespace Ecommerce
         User nuevo;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["carrito"] == null)
-            {
-                Session.Add("carrito", new List<Cart>());
-            }
             try
             {
                 if (Session["Logeado"] != null)
                 {
                     nuevo = new User();
                     nuevo = (User)Session["Logeado"];
-                    txtUsuario.Text = nuevo.Usuario; //colocamos el nombre en el navar del usuario logeado
+                    txtUsuario.Text = nuevo.Nombre; //colocamos el nombre en el navar del usuario logeado
                     salir.Visible = true;
                     Iniciar.Visible = false;  //  ocultamos el iniciar sesion
-
+                    Micompra.Visible = true;
                     if (nuevo.tipo == 1)
                     {
                         vistaadmin.Visible = true;
+                        Micompra.Visible = false;
                     }
                     else
                     {
@@ -52,9 +49,17 @@ namespace Ecommerce
 
             if (TexBuscar.Text != "")
             {
+                try
+                {
                 lista = Negocio.listar();
                 listaBuscar = lista.FindAll(x => x.Nombre.ToLower().Contains(TexBuscar.Text.ToLower()) || x.marca.Nombre.ToLower().Contains(TexBuscar.Text.ToLower())); //buscamos coinsidencias por nombre o por marca
                 Session.Add("ListBuscar", listaBuscar);     // agregamos a la session "carrito" el articulo encontrado 
+                }
+                catch
+                {
+                    Response.Redirect("Error.aspx");
+                }
+
                 Response.Redirect("Catalogo.aspx");
             }
 

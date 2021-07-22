@@ -11,16 +11,18 @@ namespace Ecommerce
 {
     public partial class Compra : System.Web.UI.Page
     {
-        public int tipo;
         public int tipopago;
+        string metodopago;
+        VentaNegosio neg = new VentaNegosio();
         public List<Cart> carrito = new List<Cart>();
         public User usuario;
         public List<User> lisUser = new List<User>();
         protected void Page_Load(object sender, EventArgs e)
         {
             UserNegosio usuarioNegosio = new UserNegosio();
-
-            if (Session["Logeado"] == null)
+            List<Pago> listaTipo = new List<Pago>();
+            listaTipo = neg.listarTipo();
+            if (Session["Logeado"] == null || Session["carrito"]==null)
             {
                 Response.Redirect("Login.aspx");
             }
@@ -48,24 +50,26 @@ namespace Ecommerce
                 {
                     carrito = (List<Cart>)Session["carrito"];
                 }
-                tipo = Convert.ToInt32(Request.QueryString["tipopago"]);
-                switch (tipo)
+                tipopago = Convert.ToInt32(Request.QueryString["tipopago"]);
+                switch (tipopago)
                 {
                     case 1:
-                        lbMetodopago.Text = "Metodo de pago : Mastercard";
-                        tipopago = 2;
+                        lbMetodopago.Text = "Metodo de pago : mercado pago";
+                        metodopago = "Mercado Pago";         
                         break;
                     case 2:
-                        lbMetodopago.Text = "Metodo de pago : Visa";
-                        tipopago = 3;
+                        lbMetodopago.Text = "Metodo de pago : Mastercard";
+                        metodopago = "Mastercard";
                         break;
                     case 3:
-                        lbMetodopago.Text = "Metodo de pago : mercado pago";
-                        tipopago = 1;
+                        lbMetodopago.Text = "Metodo de pago : Visa";
+                        metodopago = "Visa";
                         break;
                     case 4:
                         lbMetodopago.Text = "Metodo de pago : Rapipago";
-                        tipopago = 4;
+                        metodopago = "Rapipago";
+                        break;
+                    default: tipopago = 1;
                         break;
                 }
 
@@ -97,7 +101,6 @@ namespace Ecommerce
             Venta venta = new Venta();
             Items detalleVenta = new Items();
             ItemsNegosio itemCart = new ItemsNegosio();
-            VentaNegosio neg = new VentaNegosio();
 
             try
             {
@@ -108,6 +111,7 @@ namespace Ecommerce
                 venta.idUsuario = usuario.id;
                 venta.FechaVenta = DateTime.Now;
                 venta.tipoPago = tipopago;
+                venta.metodoPago = metodopago;
                 neg.Registrar(venta); //registramos la venta
                 id = neg.BuscarID();
                 foreach (Cart item in carrito)             //  por cada producto el el carrito insertamos el detalle

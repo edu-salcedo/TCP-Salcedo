@@ -36,7 +36,7 @@ namespace Ecommerce
             int idpro=0;
             foreach(Producto item in Produc)
             {
-                if (item.Id == id) ;
+                if (item.Id == id)
                 {
                     idpro = item.Id;
                 }

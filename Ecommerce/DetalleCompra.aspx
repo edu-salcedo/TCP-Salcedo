@@ -1,18 +1,24 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="FinalCompra.aspx.cs" Inherits="Ecommerce.FinalCompra1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetalleCompra.aspx.cs" Inherits="Ecommerce.DetalleCompra" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<!DOCTYPE html>
 
-
-     <style>
-        .titulo{      
-            font-size:2.5rem;
-            font-family:Bahnschrift;
-            color:brown;
-        }
-    </style>
-    <div class="container  alert-secondary my-5">
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <title>EdCOmerce</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+             <div class="container  alert-secondary my-5">
         <div class="text-center titulo">
            <p >Felicitaciones ha realizado la compra con exito</p>
         </div>
@@ -80,4 +86,7 @@
         </div>
 
 
-</asp:Content>
+        </div>
+    </form>
+</body>
+</html>

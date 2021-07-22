@@ -10,6 +10,25 @@ namespace Negosio
     public class VentaNegosio
     {
 
+        public List<Pago> listarTipo()
+        {
+
+            List<Pago> lista = new List<Pago>();
+            AccesoDatos conexion = new AccesoDatos();
+            conexion.conectar();
+            conexion.setearQuery("select id, nombre from TipoPago");
+            SqlDataReader lector = conexion.leer();
+
+            while (lector.Read())
+            {
+                Pago aux = new Pago();
+                aux.Id = lector.GetInt32(0);
+                aux.Nombre= lector.GetString(1);
+                lista.Add(aux);
+            }
+            conexion.cerrarConexion();
+            return lista;
+        }
         public List<Venta> listar()
         {
             try
@@ -17,7 +36,7 @@ namespace Negosio
                 List<Venta> listaVenta = new List<Venta>();
                 AccesoDatos conexion = new AccesoDatos();
                 conexion.conectar();
-                conexion.setearQuery("select id, IdUsuario,Fecha,Importe,TipoPago from Venta");
+                conexion.setearQuery("select id, IdUsuario,Fecha,Importe,TipoPago,MetodoPago from WVCompras");
                 SqlDataReader lector = conexion.leer();
 
                 while (lector.Read())
@@ -27,7 +46,8 @@ namespace Negosio
                     aux.idUsuario = lector.GetInt32(1);
                     aux.FechaVenta= (DateTime)lector["Fecha"];
                     aux.Importe= (decimal)lector["Importe"];
-                    aux.tipoPago= lector.GetInt32(5);
+                    aux.tipoPago= lector.GetInt32(4);
+                    aux.metodoPago= lector.GetString(5);
                     listaVenta.Add(aux);
                 }
                 conexion.cerrarConexion();

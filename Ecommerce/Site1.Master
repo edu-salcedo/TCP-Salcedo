@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <link href="Style/Styles.css" rel="stylesheet" />
     <link href="Style/SiteStyle.css" rel="stylesheet" />
@@ -25,12 +25,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="Default.aspx"><span>
-                <img src="img/logo.png" alt="" height="50" /></span></a>
+                <img src="img/logo.png" alt="" height="50" />ALLFinder</span></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="Default.aspx">categorias</a>
-                    </li>
                     <li class="nav-item mx-4">
                         <a class="nav-link" href="Catalogo.aspx">Catalogo</a>
                     </li>
@@ -42,7 +39,9 @@
                         <a class="nav-link" visible="false" id="vistaadmin" href="Productos.aspx" runat="server">Vista Admin</a>
                     </li>
 
+                    
                 </ul>
+                 <a class="navbar-brand" visible="false" id="Micompra" href="VistaClientes.aspx" runat="server">Mis Compras</a>
                 <a class="btn btn-primary mx-5" href="Carrito.aspx"><i class="bi bi-cart4">Carrito</i></a>
 
                 <a class="navbar-brand" visible="true" id="Iniciar" href="Login.aspx" runat="server">Iniciar sesion</a>

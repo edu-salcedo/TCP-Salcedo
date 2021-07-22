@@ -24,7 +24,7 @@ namespace Ecommerce
             usuario = (User)Session["logeado"];
             if (Session["compra"] == null || Session["venta"]==null)
             {
-                    
+                Response.Redirect("Catalogo.aspx");
             }
             else
             {
@@ -33,8 +33,8 @@ namespace Ecommerce
             }
 
             lbfecha.Text = "Fecha :  "+Convert.ToString( ven.FechaVenta);
-            lbtipopago.Text= "Metodo de Pago : "+ Convert.ToString(ven.tipoPago);
-            lbnombre.Text = "Nombre : "+usuario.Nombre;
+            lbtipopago.Text= "Metodo de Pago : "+ Convert.ToString(ven.metodoPago);
+            lbnombre.Text = "Nombre : "+usuario.Nombre+usuario.Apellido;
             lbtelefono.Text = "Telefono : "+ Convert.ToString(usuario.telefono);
             lbdireccion.Text= "Direccion : "+Convert.ToString(usuario.direccion);
             lbdni.Text="DNI : "+Convert.ToString(usuario.DNI);
