@@ -19,8 +19,10 @@
                      <asp:Label Text="Contrasena" runat="server" CssClass="from-group" />
                      <asp:TextBox runat="server" ID="txtPass" TextMode="Password" CssClass="form-control" />
                 </div>
+
+                     <asp:Label ID="lbErrorIngresar" runat="server" Text="" style="color:red;"></asp:Label>
                 <div class="d-grid">
-                <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click1" Text="Ingresar" CssClass="btn btn-primary" />
+                <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click1" Text="Ingresar" CssClass="btn btn-primary my2" />
                 </div>
                 <div class="my3">
                     <span>No te nes cuenta?<a href="Registro.aspx">Registrate</a></span> 

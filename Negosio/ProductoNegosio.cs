@@ -102,12 +102,12 @@ namespace Negosio
             }
         }
 
-        public void eliminar(int id)
+        public void Baja(int id)
         {
             AccesoDatos conexion = new AccesoDatos();
             try
             {
-                conexion.setearQuery("delete from Producto where id=@id");
+                conexion.setearQuery("update Producto set estado=0 where id=@id");
                 conexion.agregarParametro("@id", id);
                 conexion.ejecutarAccion();
             }

@@ -95,6 +95,7 @@
     <Content Include="FinalCompra.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MarcaYCat.aspx" />
+    <Content Include="MenuAdmin.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="prueva.aspx" />
     <Content Include="Registro.aspx" />
@@ -206,6 +207,13 @@
     </Compile>
     <Compile Include="MarcaYCat.aspx.designer.cs">
       <DependentUpon>MarcaYCat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuAdmin.aspx.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuAdmin.aspx.designer.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>

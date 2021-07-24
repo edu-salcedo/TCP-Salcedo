@@ -39,37 +39,31 @@ namespace Negosio
             }
 
         }
-        Items listarventa(Items detalle)
+        public List <Cart>listarventa(int idventa)
         {
-
-                Items aux = new Items();
-
+              List<Cart>listaux = new List<Cart>();
             AccesoDatos conexion = new AccesoDatos();
+            conexion.conectar();
             try
             {
-                conexion.setearQuery("select id,NombreUsuario,Contraseña,IdTipoUsuario tipo from Usuarios where NombreUsuario=@usuario and Contraseña=@Contrasena ");
-                conexion.agregarParametro("@usuario", detalle.idVenta);
-                conexion.agregarParametro("@Contrasena ", detalle.idProducto);
-
-                conexion.conectar();
-                conexion.lector = conexion.comando.ExecuteReader();
-                // si devuelve hay que traer el id
-                if (conexion.lector.HasRows) // si leyo  le voy a asignar los datos al usuario
+                conexion.setearQuery("select  DT.IdVenta,P.Nombre,DT.Cantidad,P.Precio Precio from DetalleVenta DT inner join Producto P on P.Id=DT.IdProducto ");
+                SqlDataReader lector = conexion.leer();
+                while (lector.Read()) 
                 {
-                    conexion.lector.Read();
-                    aux.idProducto= (int)conexion.lector["id"];
-                    aux.idVenta = (int)conexion.lector["tipo"];
-                    aux.Precio = (int)conexion.lector["tipo"];
-                    aux.cantidad= (int)conexion.lector["tipo"];
+                    Cart aux = new Cart();
+                    aux.Idventa = lector.GetInt32(0);
+                    aux.NombrePro=lector.GetString(1);
+                    aux.Cantidad= lector.GetInt32(2);
+                    aux.Precio = (decimal)lector["Precio"];
+                    listaux.Add(aux);
                 }
-                 return aux;
+                 return listaux;
                 }
             catch
             {
 
             }
-
-            return aux;       
+            return listaux;       
         }
     
         public void Registrar(Items nuevo)

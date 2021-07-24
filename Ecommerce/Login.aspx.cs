@@ -46,7 +46,7 @@ namespace Ecommerce
 
                 if (nuevo.tipo == 1)
                 {
-                    Response.Redirect("Productos.aspx");
+                    Response.Redirect("MenuAdmin.aspx");
                 }
                 if (nuevo.tipo == 2 & carrito.Count==0)
                 {
@@ -56,6 +56,10 @@ namespace Ecommerce
                 {
                     Response.Redirect("Compra.aspx");
                 }
+            }
+            else
+            {
+                lbErrorIngresar.Text = "el usuario o contraseña son incorrectos";
             }
 
         }

@@ -14,15 +14,18 @@
                         <th scope="col"></th>
                     </tr>
                     <%foreach (Dominio.User item in listaUsuario)
-                        { %>
-                    <tr>
-                        <td><%=item.Usuario %></td>
-                        <td><%=item.Nombre %></td>
-                        <td><%=item.mail %></td>
-                        <td><a href="Clientes.aspx?idCli=<%=item.id.ToString() %>" class="btn btn-primary btn lg">mas info</a></td>
-                       
-                    </tr>
-                    <%}%>
+                        {
+                            if (item.Nombre!="edwin")
+                            {%>
+                              <tr>
+                                  <td><%=item.Usuario %></td>
+                                  <td><%=item.Nombre %></td>
+                                  <td><%=item.mail %></td>
+                                  <td><a href="Clientes.aspx?idCli=<%=item.id.ToString() %>" class="btn btn-primary btn lg">mas info</a></td>
+                                 
+                              </tr>
+                           <%}
+                      }%>
                 </table>
             </div>
 

@@ -24,6 +24,7 @@ namespace Ecommerce
                     salir.Visible = true;
                     Iniciar.Visible = false;  //  ocultamos el iniciar sesion
                     Micompra.Visible = true;
+                    misdatos.Visible = true;
                     if (nuevo.tipo == 1)
                     {
                         vistaadmin.Visible = true;

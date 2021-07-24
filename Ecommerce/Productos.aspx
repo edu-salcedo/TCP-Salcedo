@@ -16,20 +16,33 @@
                         <th scope="col">Stock</th>
                         <th scope="col"></th>
                     </tr>
-                    <%foreach (Dominio.Producto item in Produc)
-                        { %>
-                    <tr>
-                        <td>
-                            <img src="<%=item.Imagen %>" alt="No hay imagen" width="100" height="100" /></td>
 
-                        <td><%=item.Nombre %></td>
-                        <td><%=string.Format("{0:C}",item.Precio) %></td>
-                        <td><%=item.stock %></td>
-                        <td><a class="btn btn-danger" href="Productos.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
-                         <td><a href="UpdateProducto.aspx?idproduct=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>
-                
-                    </tr>
-                    <%}%>
+                    <%foreach (Dominio.Producto item in Produc)
+                        {
+                            if (item.Estado==true)
+                            {%>
+                               <tr>
+                                   <td><img src="<%=item.Imagen %>" alt="No hay imagen" width="100" height="100" /></td>
+                                   <td><%=item.Nombre %></td>
+                                   <td><%=string.Format("{0:C}", item.Precio) %></td>
+                                   <td><%=item.stock %></td>
+                                   <td><a class="btn btn-danger" href="Productos.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
+                                    <td><a href="UpdateProducto.aspx?idproduct=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>                           
+                               </tr>
+                            <%}
+                             if(item.Estado==false)
+                             {%>
+                                <tr class="alert-warning">
+                                   <td><img src="<%=item.Imagen %>" alt="No hay imagen" width="100" height="100" /></td>
+                                   <td><%=item.Nombre %></td>
+                                   <td><%=string.Format("{0:C}", item.Precio) %></td>
+                                   <td><%=item.stock %></td>
+                                   <td><a class="btn btn-danger" href="Productos.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
+                                    <td><a href="UpdateProducto.aspx?idproduct=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>                           
+                               </tr>
+
+                            <%}
+                        }%>
                 </table>
             </div>
             <div class="col-12 col-md-4">

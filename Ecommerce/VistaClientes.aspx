@@ -24,7 +24,7 @@
                         <td><%=item.metodoPago%></td>
                         <td><%= string.Format("{0:C}",item.Importe) %> </td>
                         <td><%=item.FechaVenta%></td>
-                        <td> <a href="#" class=""> mas info</a></td>
+                        <td> <a href="DetalleCompra.aspx?idven=<%=item.Id%>" class=""> mas info</a></td>
                     </tr>
                     <%}%>
                 </table>

@@ -24,7 +24,7 @@ namespace Ecommerce
                 int id= buscar(aux);
                 if(id>0)
                 {
-                    negosio.eliminar(id);
+                    negosio.Baja(id);
                 }
 
             }

@@ -8,6 +8,7 @@ namespace Dominio
 {
      public class Cart
     {
+        public int Idventa { get; set; }
         public int IdProducto { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }

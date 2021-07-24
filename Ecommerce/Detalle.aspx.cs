@@ -11,15 +11,16 @@ namespace Ecommerce
 {
     public partial class Detalle : System.Web.UI.Page
     {
+        public decimal cuotas;
         int idArticulo;
        public  Producto Prodetalle=null;
-       public List<Producto> listaProducto;
+        public List<Producto> listaProducto;
         protected void Page_Load(object sender, EventArgs e)
         {
              List<Producto> aux=new List<Producto>();
+            listaProducto = new List<Producto>();
             try
-            {
-
+            { 
                 ProductoNegosio negocio = new ProductoNegosio();
                 idArticulo = Convert.ToInt32(Request.QueryString["idArticulo"]);
                 aux = negocio.listar();             
@@ -27,6 +28,8 @@ namespace Ecommerce
                     
                 listaProducto = aux.FindAll(x => x.categoria.Nombre.Contains(Prodetalle.categoria.Nombre));
                 listaProducto.Remove(listaProducto.Find(x => x.Id==idArticulo));
+                cuotas = Prodetalle.Precio / 6;
+                lbcuotas.Text = string.Format("{0:C}",cuotas);
             }
             catch
             {

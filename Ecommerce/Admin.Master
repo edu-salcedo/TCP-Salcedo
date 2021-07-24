@@ -39,6 +39,9 @@
                          <li>
                             <a class="nav-link mx-5" href="MarcaYCat.aspx">Categorias y Marcas</a>
                         </li>
+                         <li>
+                            <a class="nav-link mx-5" href="MenuAdmin.aspx">Menu Admin</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

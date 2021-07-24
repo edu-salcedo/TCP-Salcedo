@@ -19,9 +19,6 @@ namespace Ecommerce
             {
                 login = new User();
                 login = (User)Session["Logeado"];
-
-                int tipo = login.tipo;
-                string nom = login.Usuario;
                 if (login.tipo==2)
                 {
                     Response.Redirect("Default.aspx");

@@ -16,10 +16,10 @@ namespace Ecommerce
         public List<Producto> lista;
         public List<Cart> carrito = new List<Cart>();
         public int idPro = 0;
-        public int idmas = 0;
         public decimal total = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            lista = new List<Producto>();
             try
             {
                 if (Session["carrito"] == null)
@@ -39,8 +39,13 @@ namespace Ecommerce
                     }
                     if (Request.QueryString["idmas"] != null)  // si biene a sumar cantidad de producto
                     {
-                        idmas = Convert.ToInt32(Request.QueryString["idmas"]);
-                        buscar_producto(idmas);
+                        idPro = Convert.ToInt32(Request.QueryString["idmas"]);
+                        buscar_producto(idPro);
+                    }
+                    if (Request.QueryString["idmenos"] != null)  // si biene a restar cantidad de producto
+                    {
+                        idPro = Convert.ToInt32(Request.QueryString["idmenos"]);
+                        Restar_producto(idPro);
                     }
                     if (Request.QueryString["idcancelar"] != null)//si biene a quitar el producto del carrito
                     {
@@ -60,7 +65,6 @@ namespace Ecommerce
 
         protected void buscar_producto(int id)
         {
-            lista = new List<Producto>();
             Cart cart = new Cart();
             Cart aux = new Cart();
             aux = (Cart)carrito.Find(x => x.IdProducto == id);
@@ -70,7 +74,7 @@ namespace Ecommerce
             {
                 if (item.Id == id & aux==null) //si el id enviado esta en la lista de base de datos y el id no esta en carrito
                 {
-                    cart.IdProducto = item.Id;
+                    cart.IdProducto = item.Id;         //agregamos el producto  al carrito
                     cart.ImagenPro = item.Imagen;
                     cart.NombrePro = item.Nombre;
                     cart.Precio = item.Precio;
@@ -81,9 +85,10 @@ namespace Ecommerce
                 }
                 if (item.Id == id & aux!=null) // si el id enviado esta en lista de base de datos y el id esta en el carrito
                 {
-                    foreach (Cart item2 in carrito)
+                    foreach (Cart item2 in carrito) // aumentamos la cantidad
                     {
-                        if (item2.IdProducto == id)
+                        if (item2.IdProducto == id & item2.Cantidad< item.stock)
+
                             item2.Cantidad++;
                     }
                     Session["carrito"] = carrito;
@@ -91,6 +96,19 @@ namespace Ecommerce
             }
         }
 
+         void Restar_producto(int id)
+        {
+          
+             foreach (Cart item2 in carrito)
+             {
+                 if (item2.IdProducto == id)
+                {
+                    if (item2.Cantidad>1)
+                     item2.Cantidad--;
+                }
+             }
+             Session["carrito"] = carrito;
+        }
 
         decimal calcularImporte()
         {

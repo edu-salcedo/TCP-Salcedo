@@ -3,9 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="modal-dialog">
+    <div class="modal-dialog bg-success">
 
-            <div class="container modal-content px-5"> 
+            <div class="container modal-content px-5 alert-warning bg-light"> 
                    <div class="col pt-5">
                        <label class="from-group">Nombre de usuario:</label>
                        <asp:TextBox ID="texUname" runat="server" Class="form-control"></asp:TextBox>
@@ -36,6 +36,6 @@
                    </div>
                       <asp:Button ID="btnGuardar" class="btn btn-success" OnClick="btnGuardar_Click" runat="server" Text="Guardar cambios" />
                         <br />
-               </div>
+               </d>
     </div>
 </asp:Content>

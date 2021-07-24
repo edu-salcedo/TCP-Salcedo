@@ -38,10 +38,12 @@
                     <li class="nav-item mx-4 ">
                         <a class="nav-link" visible="false" id="vistaadmin" href="Productos.aspx" runat="server">Vista Admin</a>
                     </li>
-
-                    
+                    <li>
+                         <a class="nav-link" visible="false" id="misdatos" href="UpdateUser.aspx" runat="server">Mis Datos</a>
+                    </li>
                 </ul>
                  <a class="navbar-brand" visible="false" id="Micompra" href="VistaClientes.aspx" runat="server">Mis Compras</a>
+               
                 <a class="btn btn-primary mx-5" href="Carrito.aspx"><i class="bi bi-cart4">Carrito</i></a>
 
                 <a class="navbar-brand" visible="true" id="Iniciar" href="Login.aspx" runat="server">Iniciar sesion</a>
