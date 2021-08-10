@@ -31,7 +31,8 @@
                     <h3>Detalle de tu compra</h3>
                     <hr />
                 </div>
-
+              <%if (usuario.tipo == 1)
+                  {%>
                 <div class="row ">
                     <div class="col-4 ps-4">
                         <asp:Label ID="lbnombre" runat="server" Text="Label"></asp:Label><br>
@@ -39,14 +40,19 @@
                         <asp:Label ID="lbtelefono" runat="server" Text="Label"></asp:Label><br>
                     </div>
                     <div class="col-3">
-                        <asp:Label ID="lbdni" runat="server" Text="fecha"></asp:Label><br>
-                    </div>
-                    <div class="col-4">
-                        <asp:Label ID="lbfecha" runat="server" Text="dni"></asp:Label><br>
+                        <asp:Label ID="lbdni" runat="server" Text=""></asp:Label><br>
                     </div>
                 </div>
-                <hr />
-                <asp:Label ID="lbtipopago" runat="server" Text="Label"></asp:Label><br>
+                <%}%>
+                 <div class="row">
+                     <div class="col-6">
+                       <asp:Label ID="lbtipopago" runat="server" Text=""></asp:Label><br>
+                     </div>
+                    <div class="col-6">
+                        <asp:Label ID="lbfecha" runat="server" Text=""></asp:Label><br>
+                    </div>
+
+                 </div>
                 <hr />
                 <div class="container p-3">
                     <div class="col-12 modal-content">

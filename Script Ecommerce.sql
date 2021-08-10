@@ -67,10 +67,15 @@ create table Venta (
   IdUsuario int not null foreign key references  Usuarios (Id),
   Fecha datetime not null,
   Importe money not null check (Importe >0),
-  Tipopago int not null foreign key references TipoPago(id)
+  Tipopago int not null foreign key references TipoPago(id),
+  IdEstado int not null foreign key references Estado(id)
 )
 
-select GETDATE()
+go
+create table Estado(
+   id int not null primary key identity(1,1),
+   Nombre varchar(30) not Null
+)
 
 go
 create table DetalleVenta (
@@ -118,9 +123,10 @@ insert into TipoPago (Nombre)values('Targeta de credito')
 insert into TipoPago (Nombre)values('Targeta de Debito')
 insert into TipoPago (Nombre)values('Rapipago')
 
+
+
+insert into Estado(Nombre)values('En preparacion')
+insert into Estado(Nombre)values('En Camino')
+insert into Estado(Nombre)values('Entregado')
+
   select P.Id idpro, P.UrlImagen, P.Nombre,P.Descripcion,M.id idMarca,M.Nombre marca,C.Id idCategoria,C.Nombre Cat ,P.Estado estado, P.Precio precio,P.Stock stock from Producto P ,Marca M, Categoria C where P.idmarca=M.id AND	P.IdCategoria=C.id
-
-
-  select *from TipoPago 
-
-  select* from Venta V left join Pagos P on V.Id=P.IdVenta

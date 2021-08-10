@@ -14,6 +14,7 @@ namespace Ecommerce
         public List<Cart> listacompra = new List<Cart>();
         List<Venta> listaventa = new List<Venta>();
         ItemsNegosio negitem;
+        public User usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Items> itemsCarrito = new List<Items>();
@@ -26,7 +27,7 @@ namespace Ecommerce
 
             Venta ven = new Venta();
             ven = listaventa.Find(x => x.Id == idventa);
-            User usuario = new User();
+             usuario = new User();
 
             if (Session["logeado"] == null)
             {

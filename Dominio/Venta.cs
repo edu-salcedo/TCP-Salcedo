@@ -15,5 +15,6 @@ namespace Dominio
         public decimal Importe { get; set; }
         public int tipoPago { get; set; }
         public string metodoPago { get; set; }
+        public string estado { get; set; }
     }
 }

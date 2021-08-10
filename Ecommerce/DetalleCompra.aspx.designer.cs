@@ -60,15 +60,6 @@ namespace Ecommerce
         protected global::System.Web.UI.WebControls.Label lbdni;
 
         /// <summary>
-        /// lbfecha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbfecha;
-
-        /// <summary>
         /// lbtipopago control.
         /// </summary>
         /// <remarks>
@@ -76,6 +67,15 @@ namespace Ecommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbtipopago;
+
+        /// <summary>
+        /// lbfecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbfecha;
 
         /// <summary>
         /// lbtotal control.

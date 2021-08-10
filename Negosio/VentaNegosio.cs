@@ -36,7 +36,7 @@ namespace Negosio
                 List<Venta> listaVenta = new List<Venta>();
                 AccesoDatos conexion = new AccesoDatos();
                 conexion.conectar();
-                conexion.setearQuery("select id, IdUsuario,Fecha,Importe,TipoPago,MetodoPago from WVCompras");
+                conexion.setearQuery("select id, IdUsuario,Fecha,Importe,TipoPago,MetodoPago,estado from WVCompras");
                 SqlDataReader lector = conexion.leer();
 
                 while (lector.Read())
@@ -48,6 +48,7 @@ namespace Negosio
                     aux.Importe= (decimal)lector["Importe"];
                     aux.tipoPago= lector.GetInt32(4);
                     aux.metodoPago= lector.GetString(5);
+                    aux.estado= lector.GetString(6);
                     listaVenta.Add(aux);
                 }
                 conexion.cerrarConexion();
@@ -70,6 +71,7 @@ namespace Negosio
                 conexion.agregarParametro("@fecha", nuevo.FechaVenta);
                 conexion.agregarParametro("@Importe", nuevo.Importe);
                 conexion.agregarParametro("@tipopago", nuevo.tipoPago);
+                conexion.agregarParametro("@estado", 1);
                 conexion.ejecutarAccion();
             }
             catch (Exception ex)

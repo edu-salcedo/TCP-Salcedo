@@ -73,10 +73,10 @@ go
   @idcliente int,
   @fecha date,
   @Importe int,
-  @tipopago int
+  @tipopago int,
+  @estado int
   as 
-    declare @idventa int
-   insert into Venta(idUsuario,Fecha,Importe,TipoPago)values (@idcliente,GETDATE(),@Importe,@tipopago)
+   insert into Venta(idUsuario,Fecha,Importe,TipoPago,idestado)values (@idcliente,GETDATE(),@Importe,@tipopago,@estado)
 go
 
 
@@ -98,7 +98,7 @@ select NombreUsuario,Nombre,Apellido,Email,Direccion,Telefono from WVusers
 
 create view WVCompras
 as
-select V.Id,V.IdUsuario,V.Fecha,V.Importe,P.Id Tipopago,P.Nombre MetodoPago  from Venta V left join TipoPago P on P.Id=V.TipoPago
+select V.Id,V.IdUsuario,V.Fecha,V.Importe,P.Id Tipopago,P.Nombre MetodoPago,E.Nombre estado from Venta V left join TipoPago P on P.Id=V.TipoPago left join Estado E on E.id=V.idEstado
 
 
 
