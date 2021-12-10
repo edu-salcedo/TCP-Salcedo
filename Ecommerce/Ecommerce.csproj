@@ -95,7 +95,6 @@
     <Content Include="FinalCompra.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MarcaYCat.aspx" />
-    <Content Include="MenuAdmin.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="prueva.aspx" />
     <Content Include="Registro.aspx" />
@@ -112,6 +111,7 @@
     <Content Include="Style\UserStyle.css" />
     <Content Include="UpdateProducto.aspx" />
     <Content Include="UpdateUser.aspx" />
+    <Content Include="VentaDetalle.aspx" />
     <Content Include="Ventas.aspx" />
     <Content Include="VistaClientes.aspx" />
     <Content Include="Web.config" />
@@ -208,13 +208,6 @@
     <Compile Include="MarcaYCat.aspx.designer.cs">
       <DependentUpon>MarcaYCat.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MenuAdmin.aspx.cs">
-      <DependentUpon>MenuAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MenuAdmin.aspx.designer.cs">
-      <DependentUpon>MenuAdmin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -257,6 +250,13 @@
     </Compile>
     <Compile Include="UpdateUser.aspx.designer.cs">
       <DependentUpon>UpdateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VentaDetalle.aspx.cs">
+      <DependentUpon>VentaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VentaDetalle.aspx.designer.cs">
+      <DependentUpon>VentaDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventas.aspx.cs">
       <DependentUpon>Ventas.aspx</DependentUpon>

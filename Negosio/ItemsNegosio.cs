@@ -39,7 +39,7 @@ namespace Negosio
             }
 
         }
-        public List <Cart>listarventa(int idventa)
+        public List <Cart>listarventa()
         {
               List<Cart>listaux = new List<Cart>();
             AccesoDatos conexion = new AccesoDatos();

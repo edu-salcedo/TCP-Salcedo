@@ -12,12 +12,20 @@ namespace Ecommerce
 {
     public partial class Productos : System.Web.UI.Page
     {
-       public List<Producto> Produc;
+        List<Producto> listaBuscar { get; set; }
+        public List<Producto> Produc;
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegosio negosio = new ProductoNegosio();
-            Produc = negosio.listar();
-
+            if (Session["Listfiltrada"] != null)
+            {
+                Produc = (List<Producto>)Session["Listfiltrada"];
+                if(Produc.Count==0) Produc = negosio.listar();
+            }
+            else
+            {
+                Produc = negosio.listar();
+            }
             if (Request.QueryString["idCancelar"] != null)
             {
                 int aux= Convert.ToInt32(Request.QueryString["idCancelar"]);
@@ -26,6 +34,7 @@ namespace Ecommerce
                 {
                     negosio.Baja(id);
                 }
+                Produc = negosio.listar();
 
             }
 
@@ -43,6 +52,32 @@ namespace Ecommerce
             }
             return idpro;
         }
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            List<Producto> lista = new List<Producto>();
+            ProductoNegosio Negocio = new ProductoNegosio();
 
+            if (TexBuscar.Text != "")
+            {
+                try
+                {
+                    lista = Negocio.listar();
+                    Produc = lista.FindAll(x => x.Nombre.ToLower().Contains(TexBuscar.Text.ToLower()) || x.marca.Nombre.ToLower().Contains(TexBuscar.Text.ToLower())); //buscamos coinsidencias por nombre o por marca
+                    Session.Add("Listfiltrada",Produc );     // agregamos a la session "carrito" el articulo encontrado 
+                }
+                catch
+                {
+                    Response.Redirect("Error.aspx");
+                }
+
+                Response.Redirect("Productos.aspx");
+            }
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+    
+        }
     }
 }

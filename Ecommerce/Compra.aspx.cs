@@ -26,21 +26,22 @@ namespace Ecommerce
             {
                 Response.Redirect("Login.aspx");
             }
+                usuario = new User();
+                usuario = (User)Session["Logeado"];
+                if (usuario.tipo == 1) Response.Redirect("Catalogo.aspx");
             try
             {
                 lisUser = usuarioNegosio.listar();
-                usuario = new User();
-                usuario = (User)Session["Logeado"];
 
                 if (usuario.id > 0)
                 {
                     usuario = Buscar_Usuario(usuario.id);
-                    lbnombre.Text = "nombre : "+ usuario.Nombre;
+                    lbnombre.Text = usuario.Nombre;
                     lbapellido.Text = usuario.Apellido;
-                    lbdni.Text ="DNI : " +Convert.ToString( usuario.DNI);
-                    lbmail.Text = "Correo : "+usuario.mail;
-                    lbdireccion.Text = "Dirección : "+ usuario.direccion;
-                    lbtelefono.Text = "Telefono : "+Convert.ToString(usuario.telefono);
+                    lbdni.Text = Convert.ToString(usuario.DNI);
+                    lbmail.Text =  usuario.mail;
+                    lbdireccion.Text =usuario.direccion;
+                    lbtelefono.Text =  Convert.ToString(usuario.telefono);
                 }
                 if (Session["carrito"] == null)
                 {
@@ -50,29 +51,20 @@ namespace Ecommerce
                 {
                     carrito = (List<Cart>)Session["carrito"];
                 }
-                tipopago = Convert.ToInt32(Request.QueryString["tipopago"]);
-                switch (tipopago)
-                {
-                    case 1:
-                        lbMetodopago.Text = "Metodo de pago : mercado pago";
-                        metodopago = "Mercado Pago";         
-                        break;
-                    case 2:
-                        lbMetodopago.Text = "Metodo de pago : Mastercard";
-                        metodopago = "Mastercard";
-                        break;
-                    case 3:
-                        lbMetodopago.Text = "Metodo de pago : Visa";
-                        metodopago = "Visa";
-                        break;
-                    case 4:
-                        lbMetodopago.Text = "Metodo de pago : Rapipago";
-                        metodopago = "Rapipago";
-                        break;
-                    default: tipopago = 1;
-                        break;
-                }
 
+
+                if (!IsPostBack)  // si es la primera vuelta
+                {
+                    List<Pago> pagolist = new List<Pago>();
+                    pagolist = neg.listarTipo();
+                    ddPago.DataSource = pagolist;    ///se llena el dropdown  con la lista de tipo de pago registardas
+                    ddPago.DataValueField = "id";
+                    ddPago.DataTextField = "nombre";
+                    ddPago.SelectedIndex = -1;
+
+                    ddPago.DataBind();
+
+                }
             }
             catch
             {
@@ -101,17 +93,21 @@ namespace Ecommerce
             Venta venta = new Venta();
             Items detalleVenta = new Items();
             ItemsNegosio itemCart = new ItemsNegosio();
-
+            decimal subtotal;
             try
             {
                 foreach (Cart item in carrito)
                 {
-                    venta.Importe += item.Precio;
+                    subtotal = 0;
+                    subtotal = item.Precio * item.Cantidad;
+                    venta.Importe += subtotal;
                 }
                 venta.idUsuario = usuario.id;
                 venta.FechaVenta = DateTime.Now;
-                venta.tipoPago = tipopago;
-                venta.metodoPago = metodopago;
+                venta.tipoPago = Convert.ToInt32(ddPago.SelectedValue); 
+                venta.metodoPago = Convert.ToString(ddPago.Text);
+                venta.estado = new Estado();
+                venta.estado.Id=1;
                 neg.Registrar(venta); //registramos la venta
                 id = neg.BuscarID();
                 foreach (Cart item in carrito)             //  por cada producto el el carrito insertamos el detalle

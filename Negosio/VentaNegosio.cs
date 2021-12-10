@@ -36,7 +36,7 @@ namespace Negosio
                 List<Venta> listaVenta = new List<Venta>();
                 AccesoDatos conexion = new AccesoDatos();
                 conexion.conectar();
-                conexion.setearQuery("select id, IdUsuario,Fecha,Importe,TipoPago,MetodoPago,estado from WVCompras");
+                conexion.setearQuery("select id, IdUsuario,Fecha,Importe,TipoPago,MetodoPago,idestado,estado from WVCompras");
                 SqlDataReader lector = conexion.leer();
 
                 while (lector.Read())
@@ -48,7 +48,9 @@ namespace Negosio
                     aux.Importe= (decimal)lector["Importe"];
                     aux.tipoPago= lector.GetInt32(4);
                     aux.metodoPago= lector.GetString(5);
-                    aux.estado= lector.GetString(6);
+                    aux.estado = new Estado();
+                    aux.estado.Id = lector.GetInt32(6);
+                    aux.estado.Nombre= lector.GetString(7);
                     listaVenta.Add(aux);
                 }
                 conexion.cerrarConexion();
@@ -99,7 +101,75 @@ namespace Negosio
 
                 throw;
             }
+        }
 
+
+        public List<Estado> listarestado()
+        {
+            try
+            {
+                List<Estado> listaestado = new List<Estado>();
+                AccesoDatos conexion = new AccesoDatos();
+                conexion.conectar();
+                conexion.setearQuery("select id,nombre from Estado");
+                SqlDataReader lector = conexion.leer();
+
+                while (lector.Read())
+                {
+                    Estado aux = new Estado();
+                    aux.Id = lector.GetInt32(0);
+                    aux.Nombre= lector.GetString(1);
+                    if (aux.Id != 4 && aux.Id != 5)
+                    {
+                        listaestado.Add(aux);
+                    }
+                }
+                conexion.cerrarConexion();
+                return listaestado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void EditarEstado(int id ,string op)
+        {
+
+            AccesoDatos conexion = new AccesoDatos();
+            try
+            {
+                if (op =="recibido")
+                {
+                    conexion.setearQuery("update Venta set idestado=5 where id=@id");
+                    conexion.agregarParametro("@id", id);
+                    conexion.ejecutarAccion();
+                }
+                else if (op == "norecibido")
+                {
+                    conexion.setearQuery("update Venta set idestado=2 where id=@id");
+                    conexion.agregarParametro("@id", id);
+                    conexion.ejecutarAccion();
+                }
+                else if(op == "cancelar")
+                {
+                    conexion.setearQuery("update Venta set idestado=4 where id=@id");
+                    conexion.agregarParametro("@id", id);
+                    conexion.ejecutarAccion();
+                }
+                else
+                {
+                    int i = Int32.Parse(op);
+                    conexion.setearQuery("update Venta set idestado=@i where id=@id");
+                    conexion.agregarParametro("@id", id);
+                    conexion.agregarParametro("@i", i);
+                    conexion.ejecutarAccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

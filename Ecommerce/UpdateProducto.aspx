@@ -10,7 +10,6 @@
 
     <div class="container ">
         <div class="row">
-
             <div class="col-8">
                 <div class="col-md-8">
                     <asp:Label Text="Nombre:" runat="server" CssClass="label" />
@@ -68,10 +67,13 @@
 
                         </ContentTemplate>
                     </asp:UpdatePanel>
+                    <asp:Label ID="lbstring" runat="server" CssClass="alert alert-danger" Visible="false" Text=""></asp:Label>
                 </div>
                 <div class="container  text-center">
                     <br />
-                    <asp:Button ID="Button1" runat="server" OnClick="btnGuardar_Click" type="submit" CssClass="btn btn-info" Text="Guardar" />
+                    <asp:Button ID="Button1" runat="server" OnClick="btnGuardar_Click" OnClientClick="return confirm('Desea editar el articulo?')" type="submit" CssClass="btn btn-info" Text="Guardar" />
+                      <a href="Productos.aspx" class="btn btn-success"><i class="bi bi-cart4"></i>Volver</a>
+                                         
                 </div>
 
             </div>

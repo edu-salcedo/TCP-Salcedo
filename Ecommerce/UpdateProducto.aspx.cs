@@ -118,19 +118,31 @@ namespace Ecommerce
                 prod.marca.Id = Convert.ToInt32(ddMarca.SelectedValue);
                 prod.Precio = Convert.ToDecimal(txtPrecio.Text);
                 prod.stock = Convert.ToInt32(txtStock.Text);
-                prod.Imagen = txtUrl.Text;
+                if (txtUrl.Text.Length < 1000)
+                {
+                    prod.Imagen = txtUrl.Text;
+                }
             }
 
-            if (prod.Id == 0)
+            if(txtUrl.Text.Length <1000)
             {
-                negosio.registrar(prod);
-                Session["ListaProducto"]=negosio.listar();  //agregamos a la session listaProducto el nuevo producto ingresado
+
+                if (prod.Id == 0)
+                {
+                    negosio.registrar(prod);
+                    Session["ListaProducto"]=negosio.listar();  //agregamos a la session listaProducto el nuevo producto ingresado
+                }
+                else
+                {
+                    negosio.editar(prod);
+                }
+                Response.Redirect("Productos.aspx");
             }
             else
             {
-                negosio.editar(prod);
+                lbstring.Text="la url tiene muchos caracteres";
+                lbstring.Visible = true;
             }
-            Response.Redirect("Productos.aspx");
         }
     }
 }

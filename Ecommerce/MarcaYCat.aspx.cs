@@ -35,7 +35,7 @@ namespace Ecommerce
                 cat.Nombre = texnom.Text;
                 cat.Imagen = TexImagen.Text;
             }
-
+     
 
             if (Request.QueryString["idcat"]!=null) // si biene a editar una categoria
             {
@@ -48,6 +48,7 @@ namespace Ecommerce
                     imagen = cat.Imagen;
                 }
                 BtnGuardar.Visible = true;
+                BtnGuardar.Text = "Editar Categoria";
             }
             if (Request.QueryString["idMarca"]!=null)  // si biene a editar una marca
             {
@@ -58,17 +59,20 @@ namespace Ecommerce
                     texmarca.Text = mar.Nombre;
                 }
                 BtnGuardar.Visible = true;
+                BtnGuardar.Text = "Editar Marca";
             }
 
             if(Request.QueryString["cat"]=="1") //si pulsa boton ingresar nuevo categoria
             {
                     aux=1;
                 BtnGuardar.Visible = true;
+                BtnGuardar.Text = " Registrar Categoria";
             }
             if (Request.QueryString["mar"] == "2") //si pulsa boton ingresar nuevo marca
             {
                     aux= 2;
                 BtnGuardar.Visible = true;
+                BtnGuardar.Text = "Registar Marca";
             }
 
         }
@@ -114,9 +118,16 @@ namespace Ecommerce
                 {
                     cat.Nombre = texnom.Text;
                     cat.Imagen =TexImagen.Text;
-                    
-                    if(aux==1) catneg.registrar(cat);
+                    if (TexImagen.Text.Length < 100)
+                    {
+                     if (aux==1) catneg.registrar(cat);
                     if (idcat>0) catneg.editar(cat);
+
+                    }
+                    else
+                    {
+                        lbrec.Text = "la url tiene muchos caracteres";
+                    }
                  
                 }
                 if (idmarca>0||aux==2)
@@ -128,6 +139,9 @@ namespace Ecommerce
                     
                 }
             }
+
+
+            Response.Redirect("MarcaYCat.aspx");
         }
     }
 }

@@ -11,61 +11,88 @@ namespace Ecommerce
 {
 
 
-    public partial class MarcaYCat
+    public partial class VentaDetalle
     {
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// lbnombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Label lbnombre;
 
         /// <summary>
-        /// texnom control.
+        /// lbdireccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox texnom;
+        protected global::System.Web.UI.WebControls.Label lbdireccion;
 
         /// <summary>
-        /// TexImagen control.
+        /// lbtelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TexImagen;
+        protected global::System.Web.UI.WebControls.Label lbtelefono;
 
         /// <summary>
-        /// texmarca control.
+        /// lbdni control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox texmarca;
+        protected global::System.Web.UI.WebControls.Label lbdni;
 
         /// <summary>
-        /// BtnGuardar control.
+        /// lbtipopago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnGuardar;
+        protected global::System.Web.UI.WebControls.Label lbtipopago;
 
         /// <summary>
-        /// lbrec control.
+        /// lbfecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbrec;
+        protected global::System.Web.UI.WebControls.Label lbfecha;
+
+        /// <summary>
+        /// lbtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbtotal;
+
+        /// <summary>
+        /// ddestado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddestado;
+
+        /// <summary>
+        /// btnestado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnestado;
     }
 }

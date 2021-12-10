@@ -65,7 +65,6 @@
                   <div class="col-12 col-md-4">
                       <div class="container">
                           <hr />
-                          <h3>aqui se vera la informacion detallada del cliete seleccionado </h3>
                           <hr />
                       </div>
                

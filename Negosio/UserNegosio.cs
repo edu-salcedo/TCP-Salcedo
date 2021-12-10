@@ -40,6 +40,42 @@ namespace Negosio
                 throw ex;
             }
         }
+        public User Buscar(int id)
+        {
+            AccesoDatos conexion = new AccesoDatos();
+            try
+            {
+                conexion.setearQuery("select D.Nombre,D.Apellido,D.DNI, D.Email,D.Direccion,D.Telefono,U.Id from Usuarios U inner join DatosPersonales D on D.Idusuario=U.Id where U.Id=@id");
+                User aux = new User();
+                conexion.agregarParametro("@id", id);
+               
+
+                conexion.conectar();
+                conexion.lector = conexion.comando.ExecuteReader();
+                // si devuelve hay que traer el id
+                if (conexion.lector.HasRows) // si leyo  le voy a asignar los datos al usuario
+                {
+                    conexion.lector.Read();
+                    aux.id = (int)conexion.lector["id"];
+                    aux.Nombre = (string)conexion.lector["Nombre"];
+                    aux.Apellido = (string)conexion.lector["Apellido"];
+                    aux.DNI= (int)conexion.lector["DNI"];
+                    aux.mail = (string)conexion.lector["Email"];
+                    aux.telefono= (int)conexion.lector["Telefono"];
+
+                }
+                else
+                {
+                    aux.id = 0;
+                }
+                conexion.cerrarConexion();
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public User Verificar(User nuevo)
         {

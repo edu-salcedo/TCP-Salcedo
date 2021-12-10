@@ -22,6 +22,10 @@ namespace Ecommerce
             {
                 carrito = (List<Cart>)Session["carrito"];
             }
+            if (Session["Logeado"] != null)
+            {
+                Response.Redirect("Default.aspx");
+            }
 
         }
 
@@ -46,7 +50,7 @@ namespace Ecommerce
 
                 if (nuevo.tipo == 1)
                 {
-                    Response.Redirect("MenuAdmin.aspx");
+                    Response.Redirect("Productos.aspx");
                 }
                 if (nuevo.tipo == 2 & carrito.Count==0)
                 {

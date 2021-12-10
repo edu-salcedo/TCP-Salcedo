@@ -30,5 +30,12 @@ namespace Ecommerce
             }
 
         }
+
+        protected void btnsalir_Click(object sender, EventArgs e)
+        {
+            Session["logeado"] = null;
+            Session["carrito"] = null;
+            Response.Redirect("Catalogo.aspx");
+        }
     }
 }

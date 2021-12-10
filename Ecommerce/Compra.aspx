@@ -20,33 +20,45 @@
             background-color: cadetblue;
             border-radius: 3px;
         }
+         .letra{
+           color:saddlebrown;
+           font-size:1.2rem;
+           
+        }
+        
+
     </style>
 
-    <div class="container-fluid pt-3">
+    <div class="container-fluid p-3 ">
         <div class="row ">
-            <div class="col-lg-4 col-md-12 mx-3 px-4 ">
+            <div class="col-lg-4 col-md-12 mx-3 mx-4  ">
 
                 <div class="titulo2">
                     <p>Tus Datos</p>
                 </div>
 
-                <div class="col">
+                <div class="col my-3">
+                    <label class="letra">Nombre : </label>
                     <asp:Label ID="lbnombre" runat="server" Text="Label"></asp:Label>
                     <asp:Label ID="lbapellido" runat="server" Text="Label"></asp:Label>
                 </div>
 
                 <div class="col">
+                    <label class="letra">DNI : </label>
                     <asp:Label ID="lbdni" runat="server" Text="Label"></asp:Label>
                 </div>
 
-                <div class="col">
+                <div class="col my-3">
+                    <label class="letra">Direccion : </label>
                     <asp:Label ID="lbdireccion" runat="server" Text="Label"></asp:Label>
                 </div>
 
                 <div class="col">
+                    <label class="letra">Telefono : </label>
                     <asp:Label ID="lbtelefono" runat="server" Text="Label"></asp:Label>
                 </div>
-                <div class="col">
+                <div class="col my-3">
+                    <label class="letra">Correo : </label>
                     <asp:Label ID="lbmail" runat="server" Text="Label"></asp:Label>
                 </div>
 
@@ -82,44 +94,18 @@
                 </table>
 
 
+                            <div class="col-6 py-4">
+                                <label class="from-group">Tipo Pago</label>
+                                <asp:DropDownList ID="ddPago" runat="server" CssClass="form-control"></asp:DropDownList>
+                            </div>
+
+                            <div class="col text-center p-4">
+                                <asp:Button ID="btnComprar" runat="server" OnClick="btnComprar_Click" OnClientClick="return confirm('esta seguro de realizar la compra?')" Text="Comprar" CssClass="btn btn-success" />
+                            </div>
+                      
+
             </div>
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 my-3">
-                            <div>
-                                <p class="text-center" style="font-size: 1.5rem;">metodos de pago</p>
-                                <a class="navbar-brand" href="Compra.aspx?tipopago=1"><span>
-                                    <img src="img/mercadopago.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
 
-                                <a class="navbar-brand" href="Compra.aspx?tipopago=2"><span>
-                                    <img src="img/mastercard.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
-
-                                <a class="navbar-brand" href="Compra.aspx?tipopago=3"><span>
-                                    <img src="img/visa.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
-
-
-                                <a class="navbar-brand" href="Compra.aspx?tipopago=4"><span>
-                                    <img src="img/rapipago.png" alt="no hay imagen" style="width: 6rem;" /></span></a>
-
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-12 my-5">
-                            <div class="row">
-
-                            <div class="col-6">
-                                 <asp:Label ID="lbMetodopago" runat="server" Text="Metodo de pago : "></asp:Label>
-                            </div>
-
-                            <div class="col-6">
-                                <asp:Button ID="btnComprar" runat="server" OnClick="btnComprar_Click" Text="Comprar" CssClass="btn btn-success" />
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
         </div>
     </div>
 

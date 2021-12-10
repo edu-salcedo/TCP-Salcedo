@@ -6,52 +6,22 @@
 
    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
+
     <div class="text-cemter">
-        <div class="row mt-5">
-            <div class="col col-lg-4 col-md-6 col-sm-12 ">
-                 <div class="text-center">
-                <h2>Categorias</h2>
-                     <br />
-                     <a href="MarcaYCat.aspx?cat=1" class="btn btn-success btn lg">Registrar Categoria</a>
-                     <br />
-                </div>
-                <div class="container col border border-primary mt-4">
-                <table class="table table-hover">
-                    <%foreach (Dominio.Categoria item in liscat)
-                        { %>
-                    <tr>
-                        <td><%=item.Nombre %></td>
-                        <td><a class="btn btn-danger" href="MarcaYCat.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
-                        <td><a href="MarcaYCat.aspx?idcat=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>
-                    </tr>
-                    <%}%>
-                </table>
-                </div>
-            </div>
+        <div class="container">
+                <div class ="row">
+                    <div class="col text-center">
+                     <a href="MarcaYCat.aspx?cat=1" class="btn btn-success btn lg" >Registrar Categoria</a>
 
-            <div class="col col-lg-4 col-md-6 col-sm-12">
-                <div class="text-center">
-                <h2>Marcas</h2>
-                    <br />
+                    </div>
+                    <div class="col text-center">
                     <a href="MarcaYCat.aspx?mar=2" class="btn btn-success btn lg">Registrar Marca</a>
-                    <br />
-                </div>
-                <div class="container col border border-primary mt-4">
-                <table class="table table-hover">
-                    <%foreach (Dominio.Marca item in lismarca)
-                        { %>
-                    <tr>
-                        <td><%=item.Nombre %></td>
-                        <td><a class="btn btn-danger" href="MarcaYCat.aspx?idCancelar=<%= item.Id %>" role="button">Eliminar</a></td>
-                        <td><a href="MarcaYCat.aspx?idMarca=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>
-                    </tr>
-                    <%}%>
-                </table>
-              </div>
-            </div>
 
-            <div class="col col-lg-4 col-md-6 col-sm-12 ">
-                <div class="container">
+                    </div>
+
+                </div>
+
+             <div class="container">
 
                 <%if (idcat > 0 || aux==1)
                     {%>
@@ -66,7 +36,7 @@
                             <asp:Label Text="Url:" runat="server" CssClass="label" />
                             <asp:TextBox runat="server" ID="TexImagen" CssClass="form-control" AutoPostBack="true" OnTextChanged="TexImagen_TextChanged" />
                             <div class="container">
-                                <img src="<%=imagen%>" alt="" width="70%" />
+                                <img src="<%=imagen%>" alt="" width="70px" />
                               </div>
 
                         </ContentTemplate>
@@ -96,8 +66,46 @@
                     <br />
                     <asp:Button ID="BtnGuardar" runat="server" Visible="false" OnClick="BtnGuardar_Click" type="submit" CssClass="btn btn-info" Text="Guardar" />
                 </div>
+                 <asp:Label ID="lbrec" runat="server" Text=""></asp:Label>
             </div>
-           </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                 <div class="text-center">
+                <h2>Categorias</h2>
+                 
+                </div>
+                <div class="container col border border-primary mt-4">
+                <table class="table table-hover">
+                    <%foreach (Dominio.Categoria item in liscat)
+                        { %>
+                    <tr>
+                        <td><%=item.Nombre %></td>
+                       <td><a href="MarcaYCat.aspx?idcat=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>
+                    </tr>
+                    <%}%>
+                </table>
+                </div>
+            </div>
+
+            <div class="col" >
+                <div class="text-center">
+                <h2>Marcas</h2>
+         
+                </div>
+                <div class="container col border border-primary mt-4">
+                <table class="table table-hover">
+                    <%foreach (Dominio.Marca item in lismarca)
+                        { %>
+                    <tr>
+                        <td><%=item.Nombre %></td>
+                         <td><a href="MarcaYCat.aspx?idMarca=<%= item.Id %>" class="btn btn-primary btn lg">editar</a></td>
+                    </tr>
+                    <%}%>
+                </table>
+              </div>
+            </div>
+
         </div>
     </div>
 

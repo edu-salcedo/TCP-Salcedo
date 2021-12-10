@@ -76,6 +76,7 @@ create table Estado(
    id int not null primary key identity(1,1),
    Nombre varchar(30) not Null
 )
+select *from producto inner join estado on Producto.Estado=Estado.id
 
 go
 create table DetalleVenta (
@@ -128,5 +129,7 @@ insert into TipoPago (Nombre)values('Rapipago')
 insert into Estado(Nombre)values('En preparacion')
 insert into Estado(Nombre)values('En Camino')
 insert into Estado(Nombre)values('Entregado')
+insert into Estado (Nombre)values('Cancelado')
 
-  select P.Id idpro, P.UrlImagen, P.Nombre,P.Descripcion,M.id idMarca,M.Nombre marca,C.Id idCategoria,C.Nombre Cat ,P.Estado estado, P.Precio precio,P.Stock stock from Producto P ,Marca M, Categoria C where P.idmarca=M.id AND	P.IdCategoria=C.id
+
+

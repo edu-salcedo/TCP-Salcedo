@@ -9,23 +9,36 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link href="Style/AdminStyle.css" rel="stylesheet" type="text/css"/>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Style/AdminStyle.css" rel="stylesheet" />
 </head>
 <body>
+   <style>
+       .container img{
+           height:5rem;
+       }
+   </style>
 
-    <div class="container-fluid bg-info">
-        <div class="container">
-            <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="Default.aspx"><span>
-                    <img src="img/logo.png" alt="" height="80" />Vista cliente</span></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto ">
+     <form id="form1" runat="server">
+    <div class="container m-5 ">
+        <div class="row">
+            <div class="col text-center">
+                  <a class="navbar-brand" href="Default.aspx"><span>
+                 <img src="img/logo.png" alt="" class="img-fluid" />Vista cliente</span>
+                    </a>
+                <asp:Button ID="btnsalir" runat="server" OnClick="btnsalir_Click" CssClass="btn btn-danger" Text="Log out" />
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="navba">
+                  <img src="img/admin.png" alt="" height="200px" />
+             <ul class="navbar-nav">
+
                         <li>
                             <a class="nav-link mx-5" href="Productos.aspx"><span>Productos</span></a>
                         </li>
@@ -39,30 +52,21 @@
                          <li>
                             <a class="nav-link mx-5" href="MarcaYCat.aspx">Categorias y Marcas</a>
                         </li>
-                         <li>
-                            <a class="nav-link mx-5" href="MenuAdmin.aspx">Menu Admin</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <form id="form1" runat="server">
-        <div class="contenedor">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
-
-
-    <footer>
-    <div class="container-fluit p-4 bg-info">
-        <div class="text-center">
    
+                    </ul>
+
+
+            </div>
+        </div>
+        <div class="col-8 ">
+
+               <div class="contenedor">
+                   <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                   </asp:ContentPlaceHolder>
+               </div>
         </div>
     </div>
-
-    </footer>
+  </form>     
 
 
 
