@@ -186,8 +186,8 @@
                         { %>
                     <div class="m-3">
                         <label class="alert-dark mx-2">nos dijeron que recibiste la compra </label>
-                        <a class="btn btn-success" href="VistaClientes.aspx?Aceptarcompra=<%=ven.Id %>" onclick="return confirm('seguro que recibio su compra?')" role="button">si recibi la compra</a>
-                        <a class="btn btn-danger" href="VistaClientes.aspx?Cancelarcompra=<%=ven.Id %>" onclick="return confirm('seguro que no recibio la compra?')" role="button">no recibi la compra</a>
+                        <a class="btn btn-success" href="DetalleCompra.aspx?Aceptarcompra=<%=ven.Id %>" onclick="return confirm('seguro que recibio su compra?')" role="button">si recibi la compra</a>
+                        <a class="btn btn-danger"  href="DetalleCompra.aspx?Cancelarcompra=<%=ven.Id %>" onclick="return confirm('seguro que no recibio la compra?')" role="button">no recibi la compra</a>
                     </div>
                     <%} %>
                 </div>

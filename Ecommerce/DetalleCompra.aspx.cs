@@ -34,12 +34,12 @@ namespace Ecommerce
                 Response.Redirect("Catalogo.aspx");
             }
 
-            if (Request.QueryString["Aceptarcompra"] !=null)
+            if (Request.QueryString["Aceptarcompra"]!=null)
             {
                 idventa = Convert.ToInt32(Request.QueryString["Aceptarcompra"]);
                 ventaneg.EditarEstado(idventa,"recibido");
             }
-            if(Request.QueryString["Cancelarcompra"] != null)
+            if(Request.QueryString["Cancelarcompra"]!=null)
             {
                 idventa = Convert.ToInt32(Request.QueryString["Cancelarcompra"]);
                 ventaneg.EditarEstado(idventa,"norecibido");

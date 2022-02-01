@@ -139,7 +139,7 @@ namespace Negosio
             AccesoDatos conexion = new AccesoDatos();
             try
             {
-                if (op =="recibido")
+                if (op == "recibido")
                 {
                     conexion.setearQuery("update Venta set idestado=5 where id=@id");
                     conexion.agregarParametro("@id", id);

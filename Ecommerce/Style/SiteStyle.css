@@ -1,14 +1,28 @@
-﻿body {
-    font-family: 'Roboto', sans-serif;
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+body {
+    font-family: 'Poppins', sans-serif;
 }
 
-.Social{
+
+
+.socials {
+   justify-content:space-around;
+    height:auto;
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.Social {
     font-size: 50px;
     margin-top: 0px;
-    color:blue;
+    color: blue;
     position: relative;
 }
+
 .youtube {
     font-size: 50px;
     margin-top: 0px;
@@ -16,25 +30,25 @@
     position: relative;
 }
 
-.contenedor{
-    background-color:aqua;
-}
-
 ul{
     list-style-type:none;
 }
 .navfirst {
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
-    color:grey;
-    font-size:1.5rem;
-    font-family:'Times New Roman', Times, serif;
+    color: grey;
+    font-size: 1.5rem;
+
 }
 .navsecond{
     text-decoration: none;
     color:lightsteelblue;
     font-size: 1rem;
-    font-family: 'Times New Roman', Times, serif;
+    color:white;
+
 }
+
+
 
 
 
@@ -43,6 +57,7 @@ ul{
     height: 50px;
     background-color: aqua;
     border-radius: 50px;
+
 }
 
 
@@ -69,7 +84,6 @@ ul{
     width: auto;
     font-size: 5rem;
     color: orange;
-    font-family: 'Permanent Marker', cursive;
     animation-name: ani2;
     animation-duration: 3s;
     animation-iteration-count: initial;
@@ -81,7 +95,7 @@ ul{
     width: 170%;
     margin-top: 10%;
     font-size: 1rem;
-    font-family: 'Permanent Marker', cursive;
+
     color: orange;
     animation-name: ani3;
     animation-duration: 3s;

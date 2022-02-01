@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.carouselExampleControls{
+    height:400px;
+    background-color:aqua;
+}
+
+.con {
+
+}
+
+
+.CategoryContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.CategoryCard{
+    margin-top:30px;
+    height:300px;
+    text-align:center;
+}
+
+.hoverCard{
+
+    width:18rem;
+    height:18rem;
+}
+
+
+.hoverCard img:hover{
+    width:350px;
+    margin:auto;
+    margin-bottom:50px;
+}

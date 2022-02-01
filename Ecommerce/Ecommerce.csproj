@@ -106,6 +106,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Style\AdminStyle.css" />
     <Content Include="Style\CarroStyle.css" />
+    <Content Include="Style\Default.css" />
     <Content Include="Style\SiteStyle.css" />
     <Content Include="Style\Styles.css" />
     <Content Include="Style\UserStyle.css" />
